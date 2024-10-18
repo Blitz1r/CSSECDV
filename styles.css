@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400&display=swap');
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.form-container {
+    width: 80%;
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #1A4789;
+    font-size: 24px;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.form-left, .form-right {
+    width: 48%;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+label {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    color: #1D2123;
+    margin-bottom: 5px;
+    display: block;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    border: #ccc;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #EAEAEA;
+    width: calc(100% - 15px); /* Adjust width if using padding or margins */
+}
+
+input::placeholder, textarea::placeholder {
+    font-weight: 550; 
+   color: #9C9C9C;
+}
+
+textarea {
+    height: 90px;
+    resize: none;
+}
+
+input[type="date"], input[type="time"] {
+    background-color: #EAEAEA;
+}
+
+button.submit-button {
+    padding: 12px;
+    background-color: rgba(15,42,86,1);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    align-self: flex-end; 
+    width: 100px;
+}
+
+button.submit-button:hover {
+    background-color: #163e79;
+}
+
+button.prev-button {
+    padding: 12px;
+    background-color: rgba(15,42,86,1);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    align-self: flex-start;
+    width: 100px;
+}
+
+button.prev-button:hover {
+    background-color: #163e79;
+}
+
+/* Navigation buttons */
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
