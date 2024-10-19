@@ -29,6 +29,12 @@ router.get("/page3", (req, res) => {
     })
 });
 
+router.get("/dbview", (req, res) => {
+    res.render("dbview", {
+        title: "Database",
+    })
+});
+
 
 
 module.exports = router;
