@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const hbs = require('hbs');
+const connectToMongo = require('./src/scripts/conn.js'); // Import function to connect to MongoDB
 //* ===========================
 
 //* ==========Routers==========
@@ -21,6 +22,16 @@ server.set('views', path.join(__dirname, 'views'));
 
 server.use(router);
 
-server.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}/`);
-  });
+async function database() {
+    try {
+        await connectToMongo();
+        // await populateDatabase();
+    } catch (error) {
+        console.error('Server: Failed to start server', error);
+    }
+}
+
+server.listen(port, async function() {
+    await database();
+    console.log(`Server: Running on http://localhost:${port}`);
+});
