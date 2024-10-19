@@ -38,6 +38,9 @@ const formSchema = new mongoose.Schema({
     },
 
     //Departure Information
+    departureDestination: { 
+        type: String,
+    },
     departureProvince: { 
         type: String,
         required: true
@@ -47,10 +50,6 @@ const formSchema = new mongoose.Schema({
         required: true
     },
     departureBarangay: { 
-        type: String,
-        required: true
-    },
-    departureStreet: { 
         type: String,
         required: true
     },
@@ -89,7 +88,7 @@ const formSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    
+
     deleted: {
         type: Boolean,
         default: 0
