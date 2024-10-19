@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Departure Information</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Departure Information</h1>
+        <form>
+            <!-- Left Side Inputs -->
+            <div class="form-left">
+                <div class="form-group">
+                    <label for="destination">Destination (Optional)</label>
+                    <input type="text" id="destination" placeholder="Name">
+                </div>
+                <div class="form-group">
+                    <label for="province">Province</label>
+                    <input type="text" id="province" placeholder="Province (e.g. Metro Manila, etc.)">
+                </div>
+                <div class="form-group">
+                    <label for="city">City / Municipality</label>
+                    <input type="text" id="city" placeholder="City">
+                </div>
+                <div class="form-group">
+                    <label for="barangay">Barangay</label>
+                    <input type="text" id="barangay" placeholder="Barangay">
+                </div>
+                <div class="form-group">
+                    <label for="building">Building / Location</label>
+                    <input type="text" id="building" placeholder="Building / Location">
+                </div>
+            </div>
+
+            <!-- Right Side Inputs -->
+            <div class="form-right">
+                <div class="form-group">
+                    <label for="departure-date">Departure Date (Tentative)</label>
+                    <input type="date" id="departure-date">
+                </div>
+                <div class="form-group">
+                    <label for="departure-time">Departure Time (Tentative)</label>
+                    <input type="time" id="departure-time">
+                </div>
+                <div class="form-group">
+                    <label for="return-date">Return Date (Optional)</label>
+                    <input type="date" id="return-date">
+                </div>
+                <div class="form-group">
+                    <label for="additional-info">Additional Information</label>
+                    <textarea id="additional-info" placeholder="Please include detailed itinerary per date basis, time of pickup, drop-off, number of days or any other information that we may require to provide a quotation for you. Please also inform us when it is the best time to call you..."></textarea>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="navigation">
+                <button type="button" class="prev-button" onclick="window.location.href='/page1'">Back</button>
+                <button type="button" class="submit-button" onclick="window.location.href='/page3'">Next</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Information</title>
+    <link rel="stylesheet" href="/css/styles2.css">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Contact Information</h1>
+        <form>
+            <!-- Contact Information Inputs -->
+            <div class="form-left">
+                <div class="form-group">
+                    <label for="company-name">Company Name (Optional)</label>
+                    <input type="text" id="company-name" placeholder="Company">
+                </div>
+                <div class="form-group">
+                    <label for="contact-person">Contact Person</label>
+                    <input type="text" id="contact-person" placeholder="Name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="example@example.com">
+                </div>
+                <div class="form-group contact-number-group">
+                    <label for="contact-number">Contact Number</label>
+                    <div class="contact-number-container">
+                        <input type="text" class="country-code" placeholder="+63">
+                        <input type="tel" id="contact-number" placeholder="Phone / Mobile Number">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="navigation">
+                <button type="button" class="prev-button" onclick="window.location.href='/page2'">Back</button>
+                <button type="submit" class="submit-button">Submit</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

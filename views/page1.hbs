@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pick-up Information</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Pick-up Information</h1>
+        <form>
+            <div class="form-left">
+                <div class="form-group">
+                    <label for="province">Province</label>
+                    <input type="text" id="province" placeholder="Province (e.g. Metro Manila, etc.)">
+                </div>
+                <div class="form-group">
+                    <label for="city">City / Municipality</label>
+                    <input type="text" id="city" placeholder="City">
+                </div>
+                <div class="form-group">
+                    <label for="barangay">Barangay</label>
+                    <input type="text" id="barangay" placeholder="Barangay">
+                </div>
+                <div class="form-group">
+                    <label for="street">Street</label>
+                    <input type="text" id="street" placeholder="Street">
+                </div>
+                <div class="form-group">
+                    <label for="building">Building / Lot</label>
+                    <input type="text" id="building" placeholder="Building / Lot">
+                </div>
+            </div>
+            <div class="form-right">
+                <div class="form-group">
+                    <label for="date">Pick-up Date</label>
+                    <input type="date" id="date">
+                </div>
+                <div class="form-group">
+                    <label for="time">Pick-up Time</label>
+                    <input type="time" id="time">
+                </div>
+                <div class="form-group">
+                    <label for="passengers">Passengers</label>
+                    <input type="number" id="passengers" placeholder="Number of Passengers">
+                </div>
+            </div>
+            <div class="navigation">
+                <button type="button" class="submit-button" onclick="window.location.href='/page2'">Next</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
