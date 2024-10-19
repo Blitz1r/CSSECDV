@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    background-color: #F4F4F4;
+    color: #333;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #0D325F;
+    color: #FFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.logo {
+    font-size: 1.8em;
+    margin-bottom: 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.menu {
+    list-style-type: none;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.menu li {
+    margin: 15px 0;
+}
+
+.menu-item {
+    color: #FFF;
+    text-decoration: none;
+    display: block;
+    padding: 10px 15px;
+    font-size: 1.1em;
+    transition: background 0.3s ease;
+}
+
+.menu-item.active {
+    background-color: #1E4E82;
+    border-radius: 5px;
+}
+
+.menu-item:hover {
+    background-color: #1E4E82;
+    border-radius: 5px;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #FFF;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.search-filter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-box {
+    padding: 10px;
+    border: 1px solid #DDD;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.date-filter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.date-filter label {
+    font-size: 0.9em;
+    color: #333;
+}
+
+.date-filter input {
+    padding: 5px;
+    border: 1px solid #DDD;
+    border-radius: 5px;
+}
+
+.filter-btn {
+    padding: 10px 15px;
+    background-color: #0D325F;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.filter-btn:hover {
+    background-color: #1E4E82;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+}
+
+.user-name {
+    margin-right: 10px;
+    font-size: 1.2em;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    background-color: gray;
+    border-radius: 50%;
+}
+
+.table-container {
+    background-color: #FFF;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+table th, table td {
+    padding: 12px;
+}
+
+table th {
+    background-color: #0D325F;
+    color: #FFF;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+table td {
+    background-color: #F4F4F4;
+    border: 0.5px solid #DDD;
+}
+
+table tr:hover td {
+    background-color: #EEE;
+}
+
+table td:nth-child(10) {
+    white-space: pre-wrap;
+}
+
+input[type="text"], input[type="date"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #F4F4F4; /* Light Gray for consistency */
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif; /* Font change */
+    color: #333;
+}
+
+input::placeholder {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 550; 
+   color: #9C9C9C;
+}
+
+input[type="date"] {
+    background-color: #F4F4F4; /* Light Gray */
+}
+
+.edit-options {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+button.edit-button, button.delete-button {
+    padding: 10px 20px;
+    background-color: #0D325F;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+}
+
+button.edit-button:hover, button.delete-button:hover {
+    background-color: #1E4E82;
+}
