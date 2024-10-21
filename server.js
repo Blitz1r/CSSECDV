@@ -4,6 +4,7 @@ const express = require('express');
 const path = require('path');
 const hbs = require('hbs');
 const connectToMongo = require('./src/scripts/conn.js'); // Import function to connect to MongoDB
+const populateDatabase = require('./src/scripts/populateDatabase.js'); // Import function to populate database
 //* ===========================
 
 //* ==========Routers==========
@@ -15,17 +16,14 @@ var port = process.env.PORT || 3000;
 
 
 server.set('view engine', 'hbs');
-
 server.use(express.static(path.join(__dirname, 'public')));
-
 server.set('views', path.join(__dirname, 'views'));
-
 server.use(router);
 
 async function database() {
     try {
         await connectToMongo();
-        // await populateDatabase();
+        await populateDatabase();
     } catch (error) {
         console.error('Server: Failed to start server', error);
     }

@@ -1,5 +1,3 @@
-
-
 <link rel="stylesheet" href="/css/database.css">
 
 <body>
@@ -35,7 +33,7 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>Response ID</th>
                             <th>Location</th>
                             <th>Destination</th>
                             <th>Pickup Date - Time</th>
@@ -60,11 +58,26 @@
                             <td>admin@gmail.com</td>
                             <td>Private tour for a corporate group</td>
                         </tr>
-                        <!-- add rows here -->
+                        {{#each bookings}}
+                        <tr>
+                            <td>{{this.id}}</td>
+                            <td>{{this.origin}}</td>
+                            <td>{{this.destination}}</td>
+                            <td>{{this.pickupDate}} - {{this.pickupTime}}</td>
+                            <td>{{this.dropoffDate}} - {{this.dropoffTime}}</td>
+                            <td>{{this.returnDate}}</td>
+                            <td>{{this.groupSize}}</td>
+                            <td>{{this.contactNumber}}</td>
+                            <td>{{this.email}}</td>
+                            <td>{{this.description}}</td>
+                        </tr>
+                        {{/each}}
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 </body>
+
+<script src="/js/dbview.js"></script>
 

@@ -2,6 +2,8 @@
 const express = require('express');
 const Router = require('express');
 
+const form = require('../models/form.js');
+
 const router = Router();
 
 const formController = require('../controllers/formController.js');
@@ -19,9 +21,12 @@ router.get('/page2', formController.getPage2);
 
 router.get('/page3', formController.getPage3);
 
-router.get("/dbview", (req, res) => {
+router.get("/dbview", async (req, res) => {
+    const bookingData = await form.find();
+
     res.render("dbview", {
         title: "Database",
+        bookings: bookingData,
     })
 });
 
