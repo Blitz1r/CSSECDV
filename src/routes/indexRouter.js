@@ -25,6 +25,13 @@ router.get("/dbview", (req, res) => {
     })
 });
 
+router.get("/editdb", (req, res) => {
+    res.render("editdb", {
+        title: "Edit Database",
+    })
+});
+
+
 
 
 module.exports = router;
