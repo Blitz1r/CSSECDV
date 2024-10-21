@@ -4,6 +4,8 @@ const Router = require('express');
 
 const router = Router();
 
+const formController = require('../controllers/formController.js');
+
 
 router.get("/", (req, res) => {
     res.render("page1", {
@@ -11,23 +13,11 @@ router.get("/", (req, res) => {
     })
 });
 
-router.get("/page1", (req, res) => {
-    res.render("page1", {
-        title: "Pick-up Information",
-    })
-});
+router.get('/page1', formController.getPage1);
 
-router.get("/page2", (req, res) => {
-    res.render("page2", {
-        title: "Departure Information",
-    })
-});
+router.get('/page2', formController.getPage2);
 
-router.get("/page3", (req, res) => {
-    res.render("page3", {
-        title: "Contact Information",
-    })
-});
+router.get('/page3', formController.getPage3);
 
 router.get("/dbview", (req, res) => {
     res.render("dbview", {

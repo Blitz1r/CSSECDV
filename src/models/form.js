@@ -3,6 +3,11 @@ const mongoose = require('mongoose');
 
 const formSchema = new mongoose.Schema({
     //Pick-up Informatiom
+    formID: { 
+        type: Number,
+        required: true,
+        unique: true
+    },
     pickupProvince: { 
         type: String,
         required: true
