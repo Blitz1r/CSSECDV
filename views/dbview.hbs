@@ -34,11 +34,10 @@
                     <thead>
                         <tr>
                             <th>Response ID</th>
-                            <th>Location</th>
+                            <th>Pick-up Location</th>
                             <th>Destination</th>
                             <th>Pickup Date - Time</th>
                             <th>Departure Date - Time</th>
-                            <th>Return Date</th>
                             <th>Passengers</th>
                             <th>Contact No.</th>
                             <th>Email</th>
@@ -46,30 +45,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>000001</td>
-                            <td>DLSU, Taft, Manila</td>
-                            <td>Tagaytay City</td>
-                            <td>11/07/2024 - 7:30 AM</td>
-                            <td>11/07/2024 - 8:00 AM</td>
-                            <td>11/09/2024</td>
-                            <td>14</td>
-                            <td>+639123456789</td>
-                            <td>admin@gmail.com</td>
-                            <td>Private tour for a corporate group</td>
-                        </tr>
                         {{#each bookings}}
                         <tr>
-                            <td>{{this.id}}</td>
-                            <td>{{this.origin}}</td>
-                            <td>{{this.destination}}</td>
+                            <td>{{this.formID}}</td>
+                            <td>{{this.pickupAddress}}</td>
+                            <td>{{this.destinationAddress}}</td>
                             <td>{{this.pickupDate}} - {{this.pickupTime}}</td>
-                            <td>{{this.dropoffDate}} - {{this.dropoffTime}}</td>
-                            <td>{{this.returnDate}}</td>
-                            <td>{{this.groupSize}}</td>
+                            <td>{{this.departureDate}} - {{this.departureTime}}</td>
+                            <td>{{this.pickupPassengers}}</td>
                             <td>{{this.contactNumber}}</td>
                             <td>{{this.email}}</td>
-                            <td>{{this.description}}</td>
+                            <td>{{this.departureAddInformation}}</td>
                         </tr>
                         {{/each}}
                     </tbody>

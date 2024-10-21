@@ -8,7 +8,7 @@ const formSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    pickupProvince: { 
+    pickupRegion: { 
         type: String,
         required: true
     },
@@ -28,8 +28,11 @@ const formSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    pickupAddress: { 
+        type: String,
+    },
     pickupDate: { 
-        type: Date,
+        type: String,
         required: true
     },
     pickupTime: { 
@@ -42,62 +45,72 @@ const formSchema = new mongoose.Schema({
         required: true
     },
 
-    //Departure Information
-    departureDestination: { 
+    //Destination Information
+    destinationAddress:{
         type: String,
-    },
-    departureProvince: { 
-        type: String,
-        required: true
-    },
-    departureCity: { 
+    },    
+
+    destinationRegion: { 
         type: String,
         required: true
     },
-    departureBarangay: { 
+    destinationCity: { 
         type: String,
         required: true
     },
-    departureBuilding: { 
+    destinationBarangay: { 
+        type: String,
+        required: true
+    },
+    destinationBuilding: { 
         type: String,
         required: true
     },
     departureDate: { 
-        type: Date,
+        type: String,
         required: true
     },
     departureTime: { 
         type: String,
         required: true
     },
-    departureReturnDate: { 
-        type: Date
-    },
     departureAddInformation: { 
         type: String
-    },
+    },   
 
-    //Contact Information
-    contactCompanyName: { 
-        type: String
-    },
-    contactPerson: {
-        type: String,
-        required: true
-    },
-    contactEmail: {
-        type: String,
-        required: true
-    },
-    contactNumber: {
-        type: String,
-        required: true
-    },
+    // //Contact Information
+    // contactCompanyName: { 
+    //     type: String
+    // },
+    // contactPerson: {
+    //     type: String,
+    //     required: true
+    // },
+    // contactEmail: {
+    //     type: String,
+    //     required: true
+    // },
+    // contactNumber: {
+    //     type: String,
+    //     required: true
+    // },
 
     deleted: {
         type: Boolean,
         default: 0
     }
+});
+
+formSchema.pre('save', function (next) {
+    // Concatenate address fields into one string
+    this.destinationAddress = `${this.destinationBuilding}, ${this.destinationBarangay}, ${this.destinationCity}, ${this.destinationRegion}`;
+    next();
+});
+
+formSchema.pre('save', function (next) {
+    // Concatenate address fields into one string
+    this.pickupAddress = `${this.pickupBuilding}, ${this.pickupStreet}, ${this.pickupBarangay}, ${this.pickupCity}, ${this.pickupRegion}`;
+    next();
 });
 
 const FormData = mongoose.model('FormData', formSchema);
