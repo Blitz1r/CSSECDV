@@ -23,7 +23,7 @@ router.get('/page3', formController.getPage3);
 
 router.get("/dbview", async (req, res) => {
     const bookingData = await form.find();
-    const completeAddress = `${bookingData.pickupBuilding}, ${bookingData.pickupStreet}, ${bookingData.pickupBarangay}, ${formData.pickupCity}, ${formData.pickupRegion}`;
+    
     res.render("dbview", {
         title: "Database",
         bookings: bookingData,

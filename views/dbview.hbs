@@ -34,6 +34,7 @@
                     <thead>
                         <tr>
                             <th>Response ID</th>
+                            <th>Company name</th>
                             <th>Pick-up Location</th>
                             <th>Destination</th>
                             <th>Pickup Date - Time</th>
@@ -48,13 +49,14 @@
                         {{#each bookings}}
                         <tr>
                             <td>{{this.formID}}</td>
+                            <td>{{this.contactCompanyName}}</td>
                             <td>{{this.pickupAddress}}</td>
                             <td>{{this.destinationAddress}}</td>
                             <td>{{this.pickupDate}} - {{this.pickupTime}}</td>
                             <td>{{this.departureDate}} - {{this.departureTime}}</td>
                             <td>{{this.pickupPassengers}}</td>
                             <td>{{this.contactNumber}}</td>
-                            <td>{{this.email}}</td>
+                            <td>{{this.contactEmail}}</td>
                             <td>{{this.departureAddInformation}}</td>
                         </tr>
                         {{/each}}

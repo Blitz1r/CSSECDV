@@ -218,3 +218,27 @@ button.edit-button, button.delete-button {
 button.edit-button:hover, button.delete-button:hover {
     background-color: #1E4E82;
 }
+.table-container {
+    max-height: 500px; /* Adjust the height as needed */
+    overflow-y: auto; /* Enables vertical scroll */
+    overflow-x: auto; /* Enables horizontal scroll if needed */
+    position: relative;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd; /* Optional: adds borders to table cells */
+    padding: 8px; /* Optional: adds some padding to make it look nicer */
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2; /* Optional: adds a background color to header */
+    position: sticky;
+    top: 0; /* Keeps the header at the top while scrolling */
+    z-index: 1; /* Ensures the header stays above the other rows */
+}

@@ -78,23 +78,19 @@ const formSchema = new mongoose.Schema({
         type: String
     },   
 
-    // //Contact Information
-    // contactCompanyName: { 
-    //     type: String
-    // },
-    // contactPerson: {
-    //     type: String,
-    //     required: true
-    // },
-    // contactEmail: {
-    //     type: String,
-    //     required: true
-    // },
-    // contactNumber: {
-    //     type: String,
-    //     required: true
-    // },
-
+    //Contact Information
+    contactCompanyName: { 
+        type: String,
+        default: "N/A"
+    },
+    contactEmail: {
+        type: String,
+        required: true
+    },
+    contactNumber: {
+        type: String,
+        required: true
+    },
     deleted: {
         type: Boolean,
         default: 0
