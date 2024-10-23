@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400&display=swap');
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.form-box {
+    background-color: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 350px;
+}
+
+.icon-circle {
+    background-color: #1A4789;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-circle img {
+    width: 40px;
+    height: 40px;
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    color: #1A4789;
+    font-weight: 700;
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+form input {
+    display: block;
+    width: 93%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #EAEAEA;
+    font-size: 14px;
+}
+
+form input::placeholder {
+    font-weight: 550; 
+    color: #9C9C9C;
+}
+
+form button {
+    width: 100%;
+    padding: 12px;
+    background-color: rgba(15,42,86,1);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+}
+
+form button:hover {
+    background-color: #163e79;
+}
+
+p {
+    font-size: 14px;
+    color: #9C9C9C;
+}
+
+p a {
+    color: #1A4789;
+    text-decoration: none;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
