@@ -30,9 +30,12 @@ router.get("/dbview", async (req, res) => {
     })
 });
 
-router.get("/editdb", (req, res) => {
+router.get("/editdb", async (req, res) => {
+    const bookingData = await form.find();
+
     res.render("editdb", {
         title: "Edit Database",
+        bookings: bookingData,
     })
 });
 

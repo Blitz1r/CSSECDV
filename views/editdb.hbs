@@ -64,6 +64,21 @@
                                 <td>Private tour for a corporate group</td>
                             </tr>
                                 <!-- add rows here -->
+                            {{#each bookings}}
+                            <tr>
+                                <td><input type="checkbox" class="row-checkbox" value={{this._id}}  ></td>
+                                <td>{{this.formID}}</td>
+                                <td>{{this.pickupBuilding}}</td>
+                                <td>{{this.destinationBuilding}}</td>
+                                <td>{{this.pickupDate}} - {{this.pickupTime}}</td>
+                                <td>{{this.departureDate}}- {{this.departureTime}}</td>
+                                <td>N/A</td>
+                                <td>{{this.pickupPassengers}}</td>
+                                <td>{{this.contactNumber}}</td>
+                                <td>{{this.contactEmail}}</td>
+                                <td>{{this.departureAddInformation}}</td>
+                            </tr>
+                            {{/each}}
                         </tbody>
                     </table>
                 </div>
