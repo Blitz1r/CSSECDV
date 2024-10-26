@@ -23,17 +23,16 @@ const formController = { // Added the equal sign here
 
     async deleteSelected (req, res) {
         try {
-            const ids = req.body.ids; 
-
+            const ids = req.body.ids; // Access ids safely
             if (!ids) {
-              return res.status(400).send('No items selected');
+                return res.status(400).send('ids is missing');
             }
-            
+
             await Form.deleteMany({ _id: { $in: ids } });
-            await Form.save();
         
             console.log('Form deleted successfully:', ids);
-            res.redirect('back');
+
+            res.redirect(req.get('Referrer') || '/editdb');
         } catch (err) {
             console.error(err);
             return res.status(500).json({ message: 'Server error' });

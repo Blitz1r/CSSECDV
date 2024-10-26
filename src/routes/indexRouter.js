@@ -39,6 +39,8 @@ router.get("/editdb", async (req, res) => {
     })
 });
 
+router.post('/editdb/delete', formController.deleteSelected);
+
 
 
 

@@ -31,7 +31,7 @@
                 </div>
             </div>
 
-            <form id="edit-form">
+            <form id="edit-form" method="post">
                 <div class="table-container">
                     <table>
                         <thead>
@@ -63,15 +63,15 @@
                                 <td>admin@gmail.com</td>
                                 <td>Private tour for a corporate group</td>
                             </tr>
-                                <!-- add rows here -->
+                            <!-- add rows here -->
                             {{#each bookings}}
                             <tr>
-                                <td><input type="checkbox" class="row-checkbox" value={{this._id}}  ></td>
+                                <td><input type="checkbox" class="row-checkbox" name="ids" value={{this._id}}></td>
                                 <td>{{this.formID}}</td>
                                 <td>{{this.pickupBuilding}}</td>
                                 <td>{{this.destinationBuilding}}</td>
                                 <td>{{this.pickupDate}} - {{this.pickupTime}}</td>
-                                <td>{{this.departureDate}}- {{this.departureTime}}</td>
+                                <td>{{this.departureDate}} - {{this.departureTime}}</td>
                                 <td>N/A</td>
                                 <td>{{this.pickupPassengers}}</td>
                                 <td>{{this.contactNumber}}</td>
@@ -83,11 +83,19 @@
                     </table>
                 </div>
                 <div class="edit-options">
-                    <button type="button" class="edit-button">Edit</button>
-                    <button type="button" class="delete-button">Delete</button>
+                    <button type="button" class="edit-button" onclick="submitForm('/editdb/edit')">Edit</button>
+                    <button type="button" class="delete-button" onclick="submitForm('/editdb/delete')">Delete</button>
                 </div>
             </form>
         </div>
     </div>
 </body>
+
+<script>
+    function submitForm(action) {
+        const form = document.getElementById('edit-form');
+        form.action = action;
+        form.submit();
+    }
+</script>
 
