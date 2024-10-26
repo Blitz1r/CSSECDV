@@ -24,6 +24,7 @@ const formController = { // Added the equal sign here
     async deleteSelected (req, res) {
         try {
             const ids = req.body.ids; // Access ids safely
+            const formNumber = req.body.formNumber; // Access ids safely
             if (!ids) {
                 return res.status(400).send('ids is missing');
             }

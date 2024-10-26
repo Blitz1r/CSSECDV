@@ -1,6 +1,6 @@
 const sampleFormData = [
     {
-        formID: 1,
+        formNumber: 1,
         pickupRegion: "Metro Manila",
         pickupCity: "Makati",
         pickupBarangay: "Poblacion",
@@ -22,7 +22,7 @@ const sampleFormData = [
         deleted: false
     },
     {
-        formID: 2,
+        formNumber: 2,
         pickupRegion: "Metro Manila",
         pickupCity: "Quezon City",
         pickupBarangay: "Diliman",
@@ -44,7 +44,7 @@ const sampleFormData = [
         deleted: false
     },
     {
-        formID: 3,
+        formNumber: 3,
         pickupRegion: "Laguna",
         pickupCity: "Calamba",
         pickupBarangay: "Real",
@@ -66,7 +66,7 @@ const sampleFormData = [
         deleted: false
     },
     {
-        formID: 4,
+        formNumber: 4,
         pickupRegion: "Metro Manila",
         pickupCity: "Pasay",
         pickupBarangay: "Mall of Asia Complex",
@@ -88,7 +88,7 @@ const sampleFormData = [
         deleted: false
     },
     {
-        formID: 5,
+        formNumber: 5,
         pickupRegion: "Metro Manila",
         pickupCity: "Manila",
         pickupBarangay: "Malate",
@@ -110,7 +110,7 @@ const sampleFormData = [
         deleted: false
     },
     {
-        formID: 6,
+        formNumber: 6,
         pickupRegion: "Metro Manila",
         pickupCity: "Mandaluyong",
         pickupBarangay: "Wack-Wack",
@@ -132,7 +132,7 @@ const sampleFormData = [
         deleted: false
     },
     {
-        formID: 7,
+        formNumber: 7,
         pickupRegion: "Cebu",
         pickupCity: "Cebu City",
         pickupBarangay: "Lahug",
@@ -154,7 +154,7 @@ const sampleFormData = [
         deleted: false
     },
     {
-        formID: 8,
+        formNumber: 8,
         pickupRegion: "Davao",
         pickupCity: "Davao City",
         pickupBarangay: "Buhangin",
@@ -176,7 +176,7 @@ const sampleFormData = [
         deleted: false
     },
     {
-        formID: 9,
+        formNumber: 9,
         pickupRegion: "Metro Manila",
         pickupCity: "Taguig",
         pickupBarangay: "Fort Bonifacio",
@@ -198,7 +198,7 @@ const sampleFormData = [
         deleted: false
     },
     {
-        formID: 10,
+        formNumber: 10,
         pickupRegion: "Batangas",
         pickupCity: "Lipa",
         pickupBarangay: "Sabang",
