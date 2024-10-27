@@ -1,4 +1,35 @@
+// const testBtn = document.getElementById("test");
 
+
+// testBtn.addEventListener("click", (e) => {
+//     e.preventDefault();
+//     let myObj = {}
+//     const form1 = document.getElementById("page1-form");
+//     const formData = new FormData(form1);
+
+//     myObj["pickupRegion"] = formData.get("region");
+
+//     const jString = JSON.stringify(myObj);
+
+//     fetch("/submit-details", {
+//         method: 'POST',
+//         body: jString,
+//         headers: {
+//             'Content-Type': 'application/json'
+//         }
+//     })
+//     .then(response => {
+//         if (response.status === 200) {
+//             alert("Good");
+//         } else {
+//             alert("Error.");
+//         }
+//     })
+//     .catch(error => {
+//         console.error("Request failed", error);
+//         alert("An unexpected error occurred.");
+//     });
+// })
 
 document.addEventListener("DOMContentLoaded", () => {
     const form1 = document.getElementById("page1-form");
@@ -99,7 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
             })
             .then(response => {
                 if (response.status === 200) {
-                    alert("Good");
+                    windows.location = "/page1";
                 } else {
                     alert("Error.");
                 }

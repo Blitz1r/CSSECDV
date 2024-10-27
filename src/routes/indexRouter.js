@@ -41,37 +41,7 @@ router.get("/editdb", async (req, res) => {
 
 router.post('/editdb/delete', formController.deleteSelected);
 
-router.post("/submit-details", async (req, res) => {
-    try {
-        const {
-            pickupRegion,
-            pickupCity,
-            pickupBarangay,
-            pickupStreet,
-            pickupBuilding,
-            pickupDate,
-            pickupTime,
-            pickupPassengers,
-            destinationRegion,
-            destinationCity,
-            destinationBarangay,
-            destinationBuilding,
-            departureDate,
-            departureTime,
-            departureAddInformation,
-            contactCompanyName,
-            contactEmail,
-            contactNumber
-        } = req.body;
-
-        console.log(req.body);
-
-        res.sendStatus(200);
-    } catch (error) {
-        res.sendStatus(404);
-    }
-    
-});
+router.post("/submit-details", formController.submit_details);
 
 
 module.exports = router;

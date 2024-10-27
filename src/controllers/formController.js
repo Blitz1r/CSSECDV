@@ -39,6 +39,73 @@ const formController = { // Added the equal sign here
             return res.status(500).json({ message: 'Server error' });
         }
     },
+    async submit_details (req, res) {
+        try {
+            const {
+                pickupRegion,
+                pickupCity,
+                pickupBarangay,
+                pickupStreet,
+                pickupBuilding,
+                pickupDate,
+                pickupTime,
+                pickupPassengers,
+                destinationRegion,
+                destinationCity,
+                destinationBarangay,
+                destinationBuilding,
+                departureDate,
+                departureTime,
+                departureAddInformation,
+                contactCompanyName,
+                contactEmail,
+                contactNumber
+            } = req.body;
+            
+            const formNumber = await Form.countDocuments() + 1;
+            
+            const formData = {
+                formNumber: formNumber,
+                pickupRegion: pickupRegion,
+                pickupCity: pickupCity,
+                pickupBarangay: pickupBarangay,
+                pickupStreet: pickupStreet,
+                pickupBuilding: pickupBuilding,
+                pickupDate: pickupDate,
+                pickupTime: pickupTime,
+                pickupPassengers: pickupPassengers,
+                destinationRegion: destinationRegion,
+                destinationCity: destinationCity,
+                destinationBarangay: destinationBarangay,
+                destinationBuilding: destinationBuilding,
+                departureDate: departureDate,
+                departureTime: departureTime,
+                departureAddInformation: departureAddInformation,
+                contactCompanyName: contactCompanyName,
+                contactEmail: contactEmail,
+                contactNumber: contactNumber
+            };
+
+            if(departureAddInformation.trim() !== "" && departureAddInformation){
+                formData.departureAddInformation = departureAddInformation;
+            }
+
+            try {
+                // Create a new user instance with the constructed user object
+                await Form.create(formData);
+
+                // Respond with a sendStatus code and message
+                return res.sendStatus(201);
+            } catch (creationError) {
+                console.error('Error:', creationError);
+                return res.sendstatus(500);
+            }
+            
+        } catch (error) {
+            return res.sendStatus(404);
+        }
+        
+    },
 };
 
 module.exports = formController;
