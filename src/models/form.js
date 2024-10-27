@@ -27,7 +27,7 @@ const formSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    pickupAddress: { 
+    pickupAddress: { //! This doesnt need to be done manually
         type: String,
     },
     pickupDate: { 
@@ -45,7 +45,7 @@ const formSchema = new mongoose.Schema({
     },
 
     //Destination Information
-    destinationAddress:{
+    destinationAddress:{ //! This doesnt need to be done manually
         type: String,
     },    
 

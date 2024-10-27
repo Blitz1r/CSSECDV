@@ -3,47 +3,53 @@
 <body>
     <div class="form-container">
         <h1>Destination Information</h1>
-        <form>
-            <div class="form-left">
-                <div class="form-group">
-                    <label for="province">Province</label>
-                    <input type="text" id="province" placeholder="Province (e.g. NCR, Region 1, etc.)">
-                </div>
-                <div class="form-group">
-                    <label for="city">City / Municipality</label>
-                    <input type="text" id="city" placeholder="City">
-                </div>
-                <div class="form-group">
-                    <label for="barangay">Barangay</label>
-                    <input type="text" id="barangay" placeholder="Barangay">
-                </div>
-                <div class="form-group">
-                    <label for="building">Building / Location</label>
-                    <input type="text" id="building" placeholder="Building / Location">
-                </div>
-            </div>
+        <form id="page2-form">
+    <div class="form-left">
+        <div class="form-group">
+            <label for="region">Region</label>
+            <input type="text" id="region" name="region" placeholder="Province (e.g. NCR, Region 1, etc.)" required>
+        </div>
+        <div class="form-group">
+            <label for="city">City / Municipality</label>
+            <input type="text" id="city" name="city" placeholder="City" required>
+        </div>
+        <div class="form-group">
+            <label for="barangay">Barangay</label>
+            <input type="text" id="barangay" name="barangay" placeholder="Barangay" required>
+        </div>
+        <div class="form-group">
+            <label for="building">Building / Location</label>
+            <input type="text" id="building" name="building" placeholder="Building / Location" required>
+        </div>
+    </div>
 
-            <div class="form-right">
-                <div class="form-group">
-                    <label for="departure-date">Departure Date</label>
-                    <input type="date" id="departure-date">
-                </div>
-                <div class="form-group">
-                    <label for="departure-time">Departure Time</label>
-                    <input type="time" id="departure-time">
-                </div>
-                <div class="form-group">
-                    <label for="additional-info">Additional Information</label>
-                    <textarea id="additional-info" placeholder="Please include detailed itinerary per date basis, time of pickup, drop-off, number of days or any other information that we may require to provide a quotation for you. Please also inform us when it is the best time to call you..."></textarea>
-                </div>
-            </div>
+    <div class="form-right">
+        <div class="form-group">
+            <label for="departure-date">Departure Date</label>
+            <input type="date" id="departure-date" name="departure-date" required>
+        </div>
+        <div class="form-group">
+            <label for="departure-time">Departure Time</label>
+            <input type="time" id="departure-time" name="departure-time" required>
+        </div>
+        <div class="form-group">
+            <label for="additional-info">Additional Information (Optional)</label>
+            <textarea id="additional-info" name="additional-info" placeholder="Please include detailed itinerary per date basis, time of pickup, drop-off, number of days or any other information that we may require to provide a quotation for you. Please also inform us when it is the best time to call you..."></textarea>
+        </div>
+    </div>
 
-            <!-- Navigation Buttons -->
-            <div class="navigation">
-                <button type="button" class="prev-button" onclick="window.location.href='/page1'">Back</button>
-                <button type="button" class="submit-button" onclick="window.location.href='/page3'">Next</button>
-            </div>
-        </form>
+    <!-- Navigation Buttons -->
+    <div class="navigation">
+        <button type="button" class="prev-button" onclick="window.location.href='/page1'">Back</button>
+        <button type="submit" class="submit-button" id="next-page2">Next</button>
+    </div>
+</form>
+
+
     </div>
 </body>
+
+
+<script src="/js/page1.js"></script>
+
 

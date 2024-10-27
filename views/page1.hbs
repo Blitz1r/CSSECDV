@@ -2,46 +2,49 @@
 <body>
     <div class="form-container">
         <h1>Pick-up Information</h1>
-        <form>
-            <div class="form-left">
-                <div class="form-group">
-                    <label for="region">Region</label>
-                    <input type="text" id="region" placeholder="Region (e.g. NCR, Region 1m etc.)">
-                </div>
-                <div class="form-group">
-                    <label for="city">City / Municipality</label>
-                    <input type="text" id="city" placeholder="City">
-                </div>
-                <div class="form-group">
-                    <label for="barangay">Barangay</label>
-                    <input type="text" id="barangay" placeholder="Barangay">
-                </div>
-                <div class="form-group">
-                    <label for="street">Street</label>
-                    <input type="text" id="street" placeholder="Street">
-                </div>
-                <div class="form-group">
-                    <label for="building">Building / Lot</label>
-                    <input type="text" id="building" placeholder="Building / Lot">
-                </div>
-            </div>
-            <div class="form-right">
-                <div class="form-group">
-                    <label for="date">Pick-up Date</label>
-                    <input type="date" id="date">
-                </div>
-                <div class="form-group">
-                    <label for="time">Pick-up Time</label>
-                    <input type="time" id="time">
-                </div>
-                <div class="form-group">
-                    <label for="passengers">Passengers</label>
-                    <input type="number" id="passengers" placeholder="Number of Passengers">
-                </div>
-            </div>
-            <div class="navigation">
-                <button type="button" class="submit-button" onclick="window.location.href='/page2'">Next</button>
-            </div>
-        </form>
+        <form id="page1-form">
+    <div class="form-left">
+        <div class="form-group">
+            <label for="region">Region</label>
+            <input type="text" id="region" name="region" placeholder="Region (e.g. NCR, Region 1, etc.)" required>
+        </div>
+        <div class="form-group">
+            <label for="city">City / Municipality</label>
+            <input type="text" id="city" name="city" placeholder="City" required>
+        </div>
+        <div class="form-group">
+            <label for="barangay">Barangay</label>
+            <input type="text" id="barangay" name="barangay" placeholder="Barangay" required>
+        </div>
+        <div class="form-group">
+            <label for="street">Street</label>
+            <input type="text" id="street" name="street" placeholder="Street" required>
+        </div>
+        <div class="form-group">
+            <label for="building">Building / Lot</label>
+            <input type="text" id="building" name="building" placeholder="Building / Lot" required>
+        </div>
+    </div>
+    <div class="form-right">
+        <div class="form-group">
+            <label for="date">Pick-up Date</label>
+            <input type="date" id="date" name="date" required>
+        </div>
+        <div class="form-group">
+            <label for="time">Pick-up Time</label>
+            <input type="time" id="time" name="time" required>
+        </div>
+        <div class="form-group">
+            <label for="passengers">Passengers</label>
+            <input type="number" id="passengers" name="passengers" placeholder="Number of Passengers" required>
+        </div>
+    </div>
+    <div class="navigation">
+        <button type="submit" class="submit-button" id="next-page1">Next</button>
+    </div>
+</form>
+
     </div>
 </body>
+
+<script src="/js/page1.js"></script>
