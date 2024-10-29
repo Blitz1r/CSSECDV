@@ -22,7 +22,7 @@ router.get('/page2', formController.getPage2);
 router.get('/page3', formController.getPage3);
 
 router.get("/dbview", async (req, res) => {
-    const bookingData = await form.find();
+    const bookingData = await form.find().sort({'formNumber' : -1});
     
     res.render("dbview", {
         title: "Database",
@@ -31,13 +31,15 @@ router.get("/dbview", async (req, res) => {
 });
 
 router.get("/editdb", async (req, res) => {
-    const bookingData = await form.find();
+    const bookingData = await form.find().sort({'formNumber' : -1});
 
     res.render("editdb", {
         title: "Edit Database",
         bookings: bookingData,
     })
 });
+
+router.post('/editdb/filter', formController.filterView);
 
 router.post('/editdb/delete', formController.deleteSelected);
 

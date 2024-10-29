@@ -84,7 +84,7 @@ body {
     gap: 10px;
 }
 
-.search-box {
+.box {
     padding: 10px;
     border: 1px solid #DDD;
     border-radius: 5px;
@@ -178,7 +178,7 @@ table td:nth-child(10) {
     white-space: pre-wrap;
 }
 
-input[type="text"], input[type="date"] {
+input[type="text"], input[type="date"], select {
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;

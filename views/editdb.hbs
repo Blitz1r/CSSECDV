@@ -13,23 +13,34 @@
         </div>
         
         <div class="main-content">
-            <div class="header">
-                <h1>Edit Database</h1>
-                <div class="search-filter">
-                    <input type="text" placeholder="Search" class="search-box">
-                    <div class="date-filter">
-                        <label for="from-date">From:</label>
-                        <input type="date" id="from-date">
-                        <label for="to-date">To:</label>
-                        <input type="date" id="to-date">
+            <form id="filter-form" action="/editdb/filter" method="post">
+                <div class="header">
+                    <h1>Edit Database</h1>
+                    <div class="search-filter">
+                        <input type="text" placeholder="Search" class="box">
+                        <div class="date-filter">
+                            <label for="from-date">From:</label>
+                            <input type="date" id="from-date">
+                            <label for="to-date">To:</label>
+                            <input type="date" id="to-date">
+                        </div>
+                        <div class="enum-filter">
+                            <label for="sort-options" >Sort By:</label>
+                            <select id="sort-options" name="sortOptions" class="box">
+                                <option value="newestFormNumber">Newest Form Number</option>
+                                <option value="oldestFormNumber">Oldest Form Number</option>
+                                <option value="newestPickupTime">Newest Pickup Time</option>
+                                <option value="oldestPickupTime">Oldest Pickup Time</option>
+                            </select>
+                        </div>
+                        <button class="filter-btn">Filter</button>
                     </div>
-                    <button class="filter-btn">Filter</button>
+                    <div class="user-profile">
+                        <span class="user-name">admin</span>
+                        <div class="user-avatar"></div>
+                    </div>
                 </div>
-                <div class="user-profile">
-                    <span class="user-name">admin</span>
-                    <div class="user-avatar"></div>
-                </div>
-            </div>
+            </form>
 
             <form id="edit-form" method="post">
                 <div class="table-container">

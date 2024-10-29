@@ -21,6 +21,19 @@ const formController = { // Added the equal sign here
         })
     },
 
+    async filterView (req, res) {
+        try {
+            sort = req.body.sortOptions;
+            console.log(req.body);
+
+            
+            //res.redirect(req.get('Referrer') || '/editdb');
+        } catch (err) {
+            console.error(err);
+            return res.status(500).json({ message: 'Server error' });
+        }
+    },
+
     async deleteSelected (req, res) {
         try {
             const ids = req.body.ids; // Access ids safely
@@ -39,6 +52,7 @@ const formController = { // Added the equal sign here
             return res.status(500).json({ message: 'Server error' });
         }
     },
+
     async submit_details (req, res) {
         try {
             const {
