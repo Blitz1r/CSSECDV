@@ -23,11 +23,31 @@ const formController = { // Added the equal sign here
 
     async filterView (req, res) {
         try {
-            sort = req.body.sortOptions;
+            const { sortOptions, fromDate, toDate } = req.body;
             console.log(req.body);
 
-            
-            //res.redirect(req.get('Referrer') || '/editdb');
+            let query = {};
+            if (fromDate) {
+                query.pickupDate = { $gte: new Date(fromDate) };
+            }
+            if (toDate) {
+                query.pickupDate = { ...query.pickupDate, $lte: new Date(toDate) };
+            }
+    
+            let sort = {};
+            if (sortOptions === 'newestFormNumber') {
+                sort.formNumber = -1; 
+            } else if (sortOptions === 'oldestFormNumber') {
+                sort.formNumber = 1;
+            } else if (sortOptions === 'newestPickupDate') {
+                sort.pickupDate = 1;
+            } else if (sortOptions === 'oldestPickupDate') {
+                sort.pickupDate = -1;
+            }
+
+            const forms = await Form.find(query).sort(sort);
+    
+            res.render('editdb', { bookings: forms });
         } catch (err) {
             console.error(err);
             return res.status(500).json({ message: 'Server error' });
