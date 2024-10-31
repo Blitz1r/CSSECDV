@@ -31,11 +31,9 @@ const formController = { // Added the equal sign here
                 query.pickupDate = {};
                 if (fromDate) {
                     query.pickupDate.$gte = new Date(fromDate);
-                    console.log(fromDate)
                 }
                 if (toDate) {
                     query.pickupDate.$lte = new Date(toDate);
-                    console.log(toDate)
                 }
             }
     
