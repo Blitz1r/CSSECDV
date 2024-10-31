@@ -27,11 +27,16 @@ const formController = { // Added the equal sign here
             console.log(req.body);
 
             let query = {};
-            if (fromDate) {
-                query.pickupDate = { $gte: new Date(fromDate) };
-            }
-            if (toDate) {
-                query.pickupDate = { ...query.pickupDate, $lte: new Date(toDate) };
+            if (fromDate || toDate) {
+                query.pickupDate = {};
+                if (fromDate) {
+                    query.pickupDate.$gte = new Date(fromDate);
+                    console.log(fromDate)
+                }
+                if (toDate) {
+                    query.pickupDate.$lte = new Date(toDate);
+                    console.log(toDate)
+                }
             }
     
             let sort = {};
@@ -46,6 +51,11 @@ const formController = { // Added the equal sign here
             }
 
             const forms = await Form.find(query).sort(sort);
+            //to test when session comes
+
+            //req.session.bookings = forms;
+
+            //res.redirect('back');
     
             res.render('editdb', { bookings: forms });
         } catch (err) {

@@ -31,8 +31,13 @@ const formSchema = new mongoose.Schema({
         type: String,
     },
     pickupDate: { 
-        type: String,
-        required: true
+        type: Date,
+        required: true,
+        get: (date) => {
+            if (!date) return date;
+            const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+            return new Intl.DateTimeFormat('en-US', options).format(date);
+        }
     },
     pickupTime: { 
         type: String,
@@ -66,8 +71,13 @@ const formSchema = new mongoose.Schema({
         required: true
     },
     departureDate: { 
-        type: String,
-        required: true
+        type: Date,
+        required: true,
+        get: (date) => {
+            if (!date) return date;
+            const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+            return new Intl.DateTimeFormat('en-US', options).format(date);
+        }
     },
     departureTime: { 
         type: String,
