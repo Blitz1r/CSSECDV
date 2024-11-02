@@ -34,7 +34,8 @@ form {
     flex-wrap: wrap;
 }
 
-.form-left, .form-right {
+.form-left,
+.form-right {
     width: 48%;
 }
 
@@ -52,7 +53,8 @@ label {
     display: block;
 }
 
-input, textarea {
+input,
+textarea {
     width: 100%;
     padding: 10px;
     border: #ccc;
@@ -60,43 +62,45 @@ input, textarea {
     border-radius: 5px;
     font-size: 14px;
     background-color: #EAEAEA;
-    width: calc(100% - 15px); /* Adjust width if using padding or margins */
+    width: calc(100% - 15px);
 }
 
-input::placeholder, textarea::placeholder {
-    font-weight: 550; 
-   color: #9C9C9C;
+input::placeholder,
+textarea::placeholder {
+    font-weight: 550;
+    color: #9C9C9C;
 }
 
 textarea {
-    height: 90px;
+    height: 100px;
     resize: none;
 }
 
-input[type="date"], input[type="time"] {
+input[type="date"],
+input[type="time"] {
     background-color: #EAEAEA;
 }
 
-button.submit-button {
+button.next-button {
     padding: 12px;
-    background-color: rgba(15,42,86,1);
+    background-color: rgba(15, 42, 86, 1);
     color: white;
     border: none;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
     margin-top: 20px;
-    align-self: flex-end; 
+    align-self: flex-end;
     width: 100px;
 }
 
-button.submit-button:hover {
+button.next-button:hover {
     background-color: #163e79;
 }
 
 button.prev-button {
     padding: 12px;
-    background-color: rgba(15,42,86,1);
+    background-color: rgba(15, 42, 86, 1);
     color: white;
     border: none;
     border-radius: 5px;
@@ -111,10 +115,52 @@ button.prev-button:hover {
     background-color: #163e79;
 }
 
-/* Navigation buttons */
+button.submit-button {
+    padding: 12px;
+    background-color: #ffcc00;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    align-self: flex-end;
+    width: 100px;
+
+}
+
+button.submit-button:hover {
+    background-color: #e6b800;
+}
+
 .navigation {
     display: flex;
     justify-content: space-between;
     width: 100%;
 }
 
+/* summary style css */
+.summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.answers {
+    padding: 10px; 
+    border-radius: 4px;
+    color: #1D2123;
+    margin: 0;   
+    width: 100%;
+    font-weight: 500;
+    font-size: 14px;
+    background-color: #EAEAEA;
+    width: calc(100% - 20px);
+}
+
+#additional-info-summary {
+    padding: 10px;
+    background-color: #e9ecef;
+    border-radius: 4px;
+    color: #1D2123;
+}

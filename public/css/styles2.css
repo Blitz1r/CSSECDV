@@ -27,7 +27,6 @@ h1 {
     margin-bottom: 20px;
 }
 
-/* Flexbox layout */
 form {
     display: flex;
     flex-direction: column;
@@ -44,7 +43,7 @@ form {
 
 label {
     font-family: 'Open Sans', sans-serif;
-    font-weight: 400; /* Regular */
+    font-weight: 400;
     font-size: 14px;
     color: #333;
     margin-bottom: 5px;
@@ -61,11 +60,10 @@ input {
 }
 
 input::placeholder {
-    font-weight: 700; /* Bold placeholder */
-    color: #a8a8a8; /* Slightly darker to distinguish it */
+    font-weight: 700;
+    color: #a8a8a8; 
 }
 
-/* Styling for contact number with country code */
 .contact-number-group {
     display: flex;
     flex-direction: column;
@@ -91,28 +89,26 @@ input[type="tel"] {
     padding: 10px;
 }
 
-/* Style for the submit button */
-button.submit-button {
+button.next-button {
     padding: 12px;
-    background-color: #ffcc00; /* Yellow color */
-    color: black;
+    background-color: rgba(15, 42, 86, 1);
+    color: white;
     border: none;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
     margin-top: 20px;
     align-self: flex-end;
-    width: 100px; /* Button size */
+    width: 100px;
 }
 
-button.submit-button:hover {
-    background-color: #e6b800; /* Darker yellow on hover */
+button.next-button:hover {
+    background-color: #163e79;
 }
 
-/* Previous button */
 button.prev-button {
     padding: 12px;
-    background-color: #1f4a7d;
+    background-color: rgba(15, 42, 86, 1);
     color: white;
     border: none;
     border-radius: 5px;
@@ -124,10 +120,9 @@ button.prev-button {
 }
 
 button.prev-button:hover {
-    background-color: #1a3d65;
+    background-color: #163e79;
 }
 
-/* Navigation buttons */
 .navigation {
     display: flex;
     justify-content: space-between;
