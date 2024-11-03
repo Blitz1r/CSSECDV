@@ -23,7 +23,7 @@ const formController = { // Added the equal sign here
 
     async filterView (req, res) {
         try {
-            const { sortOptions, fromDate, toDate } = req.body;
+            const { sortOptions, fromDate, toDate, search } = req.body;
             console.log(req.body);
 
             let query = {};
@@ -36,7 +36,32 @@ const formController = { // Added the equal sign here
                     query.pickupDate.$lte = new Date(toDate);
                 }
             }
+
+            // if (search) {
+            //     query.$or = [
+            //         { pickupLocation: { $regex: search, $options: 'i' } },
+            //         { pickupDate: { $regex: search, $options: 'i' } }
+            //     ];
+            // }
     
+            if (search) {
+                const searchDate = new Date(search);
+                if (!isNaN(searchDate.getTime())) {
+                    query.$or = [
+                        { pickupDate: searchDate },
+                        { departureDate: searchDate }
+                    ];
+                } else {
+                    query.$or = [
+                        { pickupBuilding: { $regex: search, $options: 'i' } },
+                        { contactCompanyName: { $regex: search, $options: 'i' } },
+                        { destinationBuilding: { $regex: search, $options: 'i' } },
+                        { contactNumber: { $regex: search, $options: 'i' } }, //do not include country code
+                        { contactEmail: { $regex: search, $options: 'i' } }
+                    ];
+                }
+            }
+
             let sort = {};
             if (sortOptions === 'newestFormNumber') {
                 sort.formNumber = -1; 
