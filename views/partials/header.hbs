@@ -1,0 +1,26 @@
+<div class="header">
+    <h1>Edit Database</h1>
+    <div class="search-filter">
+        <input type="text" name="search" placeholder="Search" class="box">
+        <div class="date-filter">
+            <label for="fromDate">From:</label>
+            <input type="date" name="fromDate" id="fromDate">
+            <label for="toDate">To:</label>
+            <input type="date" name="toDate" id="toDate">
+        </div>
+        <div class="enum-filter">
+            <label for="sort-options" >Sort:</label>
+            <select id="sort-options" name="sortOptions" class="box">
+                <option value="newestFormNumber">Newest Form Number</option>
+                <option value="oldestFormNumber">Oldest Form Number</option>
+                <option value="newestPickupDate">Nearest Pickup Date</option>
+                <option value="oldestPickupDate">Farthest Pickup Date</option>
+            </select>
+        </div>
+        <button class="filter-btn">Filter</button>
+    </div>
+    <div class="user-profile">
+        <span class="user-name">admin</span>
+        <div class="user-avatar"></div>
+    </div>
+</div>

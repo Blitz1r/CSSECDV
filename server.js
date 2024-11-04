@@ -16,7 +16,7 @@ const router = require('./src/routes/indexRouter.js'); // Import the main router
 const server = express();
 var port = process.env.PORT || 3000;
 
-
+hbs.registerPartials(__dirname + '/views/partials');
 server.set('view engine', 'hbs');
 server.use(express.static(path.join(__dirname, 'public')));
 server.set('views', path.join(__dirname, 'views'));
