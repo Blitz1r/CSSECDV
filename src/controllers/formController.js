@@ -21,6 +21,12 @@ const formController = { // Added the equal sign here
         })
     },
 
+    getFormSummary: (req, res) => {
+        res.render("formSummary", {
+            title: "Form Summary",
+        })
+    },
+
     async filterView (req, res) {
         try {
             const { sortOptions, fromDate, toDate, search } = req.body;
@@ -156,6 +162,8 @@ const formController = { // Added the equal sign here
             if(departureAddInformation.trim() !== "" && departureAddInformation){
                 formData.departureAddInformation = departureAddInformation;
             }
+
+            // console.log("form Data: ", formData);
 
             try {
                 // Create a new user instance with the constructed user object

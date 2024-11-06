@@ -1,0 +1,63 @@
+<link rel="stylesheet" href="/css/styles.css">
+
+<body>
+    <div class="form-container">
+        <h1>Form Summary</h1>
+        
+        <div class="summary-grid">
+            <div class="form-group">
+                <label>Pick-up Location:</label>
+                <p class="answers" id="pick_up_location"></p>
+            </div>
+
+            <div class="form-group">
+                <label>Destination:</label>
+                <p class="answers" id="destination"></p>
+            </div>
+
+            <div class="form-group">
+                <label>Pickup Date & Time:</label>
+                <p class="answers" id="pick_up_time"></p>
+            </div>
+
+            {{!-- <div class="form-group">
+                <label>Departure Date - Time:</label>
+                <p class="answers" id="departure_time"></p>
+            </div> --}}
+
+            <div class="form-group">
+                <label>Return Date:</label>
+                <p class="answers" id="return_date"></p>
+            </div>
+
+            <div class="form-group">
+                <label>Passengers:</label>
+                <p class="answers" id="passengers"></p>
+            </div>
+
+            <div class="form-group">
+                <label>Contact No.:</label>
+                <p class="answers" id="contact"></p>
+            </div>
+
+            <div class="form-group">
+                <label>Email:</label>
+                <p class="answers" id="email"></p>
+            </div>
+
+            <div class="form-group" style="grid-column: span 2;">
+                <label>Additional Info:</label>
+                <p id="additional-info-summary" class="answers"></p>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <button type="button" class="prev-button" onclick="window.location.href='Page3.html'">Back</button>
+            <button type="button" class="submit-button" onclick="sendDataToDB()">Submit</button>
+        </div>
+    </div>
+</body>
+
+
+<script src="/js/page1.js"></script>
+

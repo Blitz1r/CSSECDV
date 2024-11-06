@@ -31,6 +31,8 @@
 //     });
 // })
 
+let myObj = {};
+
 document.addEventListener("DOMContentLoaded", () => {
     const form1 = document.getElementById("page1-form");
     const form2 = document.getElementById("page2-form");
@@ -54,6 +56,17 @@ document.addEventListener("DOMContentLoaded", () => {
             myObj["pickupTime"] = convertMilitaryToStandard(formData.get("time"));
             myObj["pickupPassengers"] = formData.get("passengers");
 
+
+            const fullAddress = [
+                formData.get("region"),
+                formData.get("city"),
+                formData.get("barangay"),
+                formData.get("street"),
+                formData.get("building")
+            ].filter(Boolean).join(", ");
+            
+            myObj["pickup_fullAddress"] = fullAddress;
+
             // Store myObj in localStorage as a JSON string
             localStorage.setItem("myFormData", JSON.stringify(myObj));
             
@@ -69,9 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const formData = new FormData(form2);
 
-
             const storedData = localStorage.getItem("myFormData");
-            let myObj = {};
 
             if (storedData) {
                 myObj = JSON.parse(storedData);
@@ -87,6 +98,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 myObj["departureAddInformation"] = formData.get("additional-info");
             }
 
+            const fullAddress = [
+                formData.get("region"),
+                formData.get("city"),
+                formData.get("barangay"),
+                formData.get("building")
+            ].filter(Boolean).join(", ");
+            
+            myObj["destination_fullAddress"] = fullAddress;
+
             localStorage.setItem("myFormData", JSON.stringify(myObj));
             window.location.href = '/page3';
         });
@@ -100,13 +120,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             const storedData = localStorage.getItem("myFormData");
-            let myObj = {};
 
             if (storedData) {
                 myObj = JSON.parse(storedData);
             }
 
-            if(formData.get("company-name").trim != ""){
+            if(formData.get("company-name").trim() != ""){
                 myObj["contactCompanyName"] = formData.get("company-name");
             };
             const countryCode = formData.get("country-code");
@@ -116,32 +135,105 @@ document.addEventListener("DOMContentLoaded", () => {
             myObj["contactEmail"] = formData.get("email");
             myObj["contactNumber"] = fullContactNumber;
 
+            localStorage.setItem("myFormData", JSON.stringify(myObj));
 
             // console.log(myObj);
-
-            const jString = JSON.stringify(myObj);
-
-            fetch("/submit-details", {
-                method: 'POST',
-                body: jString,
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(response => {
-                if (response.status === 200) {
-                    windows.location = "/page1";
-                } else {
-                    alert("Error.");
-                }
-            })
-            .catch(error => {
-                console.error("Request failed", error);
-                alert("An unexpected error occurred.");
-            });
+            window.location = "/form/summary";
+            
         });
     }
+
+    const pickUpElement = document.getElementById("pick_up_location");
+    const destinationElement = document.getElementById("destination");
+    const pickUpTimeElement = document.getElementById("pick_up_time");
+    // const departureTimeElement = document.getElementById("departure_time");
+    const returnDateElement = document.getElementById("return_date");
+    const passengersElement = document.getElementById("passengers");
+    const contactElement = document.getElementById("contact");
+    const emailElement = document.getElementById("email");
+    const additionalInfoElement = document.getElementById("additional-info-summary");
+
+
+    const storedData = localStorage.getItem("myFormData");
+
+    if (storedData) {
+        myObj = JSON.parse(storedData);
+    }
+
+    if (pickUpElement) {
+        console.log(myObj);
+        pickUpElement.textContent = myObj["pickup_fullAddress"];
+        delete myObj["pickup_fullAddress"];
+    }
+
+    if (destinationElement) {
+        destinationElement.textContent = myObj["destination_fullAddress"];
+        delete myObj["destination_fullAddress"]
+    }
+    
+    if (pickUpTimeElement) {
+        pickUpTimeElement.textContent = `${myObj["pickupDate"]} ${myObj["pickupTime"]}`;
+
+    }
+    
+    // if (departureTimeElement) {
+    // }
+    
+    if (returnDateElement) {
+        returnDateElement.textContent = `${myObj["departureDate"]} ${myObj["departureTime"]}`;
+    }
+    
+    if (passengersElement) {
+        passengersElement.textContent = myObj["pickupPassengers"];
+    }
+    
+    if (contactElement) {
+        contactElement.textContent = myObj["contactNumber"];
+    }
+    
+    if (emailElement) {
+        emailElement.textContent = myObj["contactEmail"];
+    }
+    
+    if (additionalInfoElement) {
+        additionalInfoElement.textContent = myObj["departureAddInformation"];
+    }
+    
+
 });
+
+
+function sendDataToDB(){
+    const storedData = localStorage.getItem("myFormData");
+    if (storedData) {
+        myObj = JSON.parse(storedData);
+    }
+
+
+    // console.log(myObj)
+    const jString = JSON.stringify(myObj);
+
+
+    fetch("/submit-details", {
+        method: 'POST',
+        body: jString,
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        if (response.status === 201) {
+            alert("Success!")
+            // windows.location = "/page1";
+        } else {
+            alert("Error.");
+        }
+    })
+    .catch(error => {
+        console.error("Request failed", error);
+        alert("An unexpected error occurred.");
+    });
+}
 
 
 

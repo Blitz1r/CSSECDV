@@ -21,6 +21,8 @@ router.get('/page2', formController.getPage2);
 
 router.get('/page3', formController.getPage3);
 
+router.get('/form/summary', formController.getFormSummary);
+
 router.get("/dbview", async (req, res) => {
     const bookingData = await form.find().sort({'formNumber' : -1});
     
