@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+const { formatInTimeZone } = require('date-fns-tz');
+
 const formSchema = new mongoose.Schema({
     //Pick-up Informatiom
     formNumber: { 
@@ -35,8 +37,12 @@ const formSchema = new mongoose.Schema({
         required: true,
         get: (date) => {
             if (!date) return date;
-            const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
-            return new Intl.DateTimeFormat('en-US', options).format(date);
+            const timeZone = 'Asia/Manila'; 
+            const zonedDate = formatInTimeZone(date, timeZone, 'MM/dd/yyyy'); //HH:mm:ss
+            return zonedDate;
+            
+            //const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+            //return new Intl.DateTimeFormat('en-US', options).format(new Date(zonedDate));
         }
     },
     pickupTime: { 
@@ -75,8 +81,12 @@ const formSchema = new mongoose.Schema({
         required: true,
         get: (date) => {
             if (!date) return date;
-            const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
-            return new Intl.DateTimeFormat('en-US', options).format(date);
+            const timeZone = 'Asia/Manila'; 
+            const zonedDate = formatInTimeZone(date, timeZone, 'MM/dd/yyyy'); //HH:mm:ss
+            return zonedDate;
+            
+            //const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+            //return new Intl.DateTimeFormat('en-US', options).format(new Date(zonedDate));
         }
     },
     departureTime: { 

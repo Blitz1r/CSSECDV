@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const Form = require('../models/form.js');
 
+const { formatInTimeZone } = require('date-fns-tz');
+
 const formController = { // Added the equal sign here
     
     getPage1: (req, res) => {
@@ -36,10 +38,14 @@ const formController = { // Added the equal sign here
             if (fromDate || toDate) {
                 query.pickupDate = {};
                 if (fromDate) {
-                    query.pickupDate.$gte = new Date(fromDate);
+                    const timeZone = 'Asia/Manila'; 
+                    const zonedDate = formatInTimeZone(fromDate, timeZone, 'MM/dd/yyyy'); // HH:mm:ss
+                    query.pickupDate.$gte = new Date(zonedDate);
                 }
                 if (toDate) {
-                    query.pickupDate.$lte = new Date(toDate);
+                    const timeZone = 'Asia/Manila'; 
+                    const zonedDate = formatInTimeZone(toDate, timeZone, 'MM/dd/yyyy');
+                    query.pickupDate.$lte = new Date(zonedDate);
                 }
             }
 
@@ -95,8 +101,8 @@ const formController = { // Added the equal sign here
 
     async deleteSelected (req, res) {
         try {
-            const ids = req.body.ids; // Access ids safely
-            const formNumber = req.body.formNumber; // Access ids safely
+            const ids = req.body.ids; 
+            const formNumber = req.body.formNumber; 
             if (!ids) {
                 return res.status(400).send('ids is missing');
             }
