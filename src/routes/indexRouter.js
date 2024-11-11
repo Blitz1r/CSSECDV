@@ -15,13 +15,16 @@ router.get("/", (req, res) => {
     })
 });
 
-router.get('/page1', formController.getPage1);
+router.get('/form/1', formController.getPage1);
 
-router.get('/page2', formController.getPage2);
+router.get('/form/2', formController.getPage2);
 
-router.get('/page3', formController.getPage3);
+router.get('/form/3', formController.getPage3);
 
 router.get('/form/summary', formController.getFormSummary);
+
+router.get('/form/4', formController.getPage4);
+
 
 router.get("/dbview", async (req, res) => {
     const bookingData = await form.find().sort({'formNumber' : -1});

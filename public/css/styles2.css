@@ -128,3 +128,21 @@ button.prev-button:hover {
     justify-content: space-between;
     width: 100%;
 }
+
+button.submit-button {
+    padding: 12px;
+    background-color: #ffcc00;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    align-self: flex-end;
+    width: 100px;
+
+}
+
+button.submit-button:hover {
+    background-color: #e6b800;
+}

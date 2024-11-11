@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.setItem("myFormData", JSON.stringify(myObj));
             
             // Redirect to another page
-            window.location.href = '/page2';
+            window.location.href = '/form/2';
         });
     }
 
@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
             myObj["destination_fullAddress"] = fullAddress;
 
             localStorage.setItem("myFormData", JSON.stringify(myObj));
-            window.location.href = '/page3';
+            window.location.href = '/form/3';
         });
     }
 
@@ -195,24 +195,34 @@ document.addEventListener("DOMContentLoaded", () => {
         emailElement.textContent = myObj["contactEmail"];
     }
     
-    if (additionalInfoElement) {
+    if (additionalInfoElement && myObj["departureAddInformation"].trim() != "") {
+        document.getElementById("add-info").style.display = "";
         additionalInfoElement.textContent = myObj["departureAddInformation"];
+    } else {
+        document.getElementById("add-info").style.display = "none";
     }
-    
-
 });
 
 
-function sendDataToDB(){
+function sendDataToDB() {
     const storedData = localStorage.getItem("myFormData");
+    let myObj = null;
+
     if (storedData) {
-        myObj = JSON.parse(storedData);
+        try {
+            myObj = JSON.parse(storedData);
+        } catch (error) {
+            console.error("Failed to parse stored data:", error);
+            alert("Invalid data format.");
+            return;
+        }
+    } else {
+        alert("No data found to send.");
+        return;
     }
 
-
-    // console.log(myObj)
+    console.log(myObj);
     const jString = JSON.stringify(myObj);
-
 
     fetch("/submit-details", {
         method: 'POST',
@@ -223,18 +233,16 @@ function sendDataToDB(){
     })
     .then(response => {
         if (response.status === 201) {
-            alert("Success!")
-            // windows.location = "/page1";
+            window.location = "/form/4";
         } else {
-            alert("Error.");
+            alert("Error: " + response.statusText);
         }
     })
     .catch(error => {
         console.error("Request failed", error);
-        alert("An unexpected error occurred.");
+        alert("An unexpected error occurred. Please try again.");
     });
 }
-
 
 
 function formatDateString(dateString) {
