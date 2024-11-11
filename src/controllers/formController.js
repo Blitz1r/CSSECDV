@@ -65,9 +65,9 @@ const formController = { // Added the equal sign here
                     ];
                 } else {
                     query.$or = [
-                        { pickupBuilding: { $regex: search, $options: 'i' } },
+                        { pickupAddress: { $regex: search, $options: 'i' } },
                         { contactCompanyName: { $regex: search, $options: 'i' } },
-                        { destinationBuilding: { $regex: search, $options: 'i' } },
+                        { destinationAddress: { $regex: search, $options: 'i' } },
                         { contactNumber: { $regex: search, $options: 'i' } }, //do not include country code
                         { contactEmail: { $regex: search, $options: 'i' } }
                     ];

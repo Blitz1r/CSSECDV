@@ -24,7 +24,8 @@
                             <tr>
                                 <th>Select</th>
                                 <th>Form Number</th>
-                                <th>Location</th>
+                                <th>Company name</th>
+                                <th>Pick-up Location</th>
                                 <th>Destination</th>
                                 <th>Pickup Date - Time</th>
                                 <th>Departure Date - Time</th>
@@ -40,8 +41,9 @@
                             <tr>
                                 <td><input type="checkbox" class="row-checkbox" name="ids" value={{this._id}}></td>
                                 <td>{{this.formNumber}}</td>
-                                <td>{{this.pickupBuilding}}</td>
-                                <td>{{this.destinationBuilding}}</td>
+                                <td>{{this.contactCompanyName}}</td>
+                                <td>{{this.pickupAddress}}</td>
+                                <td>{{this.destinationAddress}}</td>
                                 <td>{{this.pickupDate}} - {{this.pickupTime}}</td>
                                 <td>{{this.departureDate}} - {{this.departureTime}}</td>
                                 <td>{{this.pickupPassengers}}</td>
