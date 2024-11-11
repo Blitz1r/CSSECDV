@@ -76,41 +76,53 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    if(form2){
+    if (form2) {
         form2.addEventListener("submit", async (e) => {
             e.preventDefault();
-
+    
             const formData = new FormData(form2);
-
             const storedData = localStorage.getItem("myFormData");
-
+            let myObj = {};
+    
             if (storedData) {
                 myObj = JSON.parse(storedData);
             }
+            // console.log("Pick-up:", new Date(myObj["pickupDate"]))
+            // console.log("Departure:", new Date(formatDateString(formData.get("departure-date"))))
+            // console.log("Compare: ", compareDates(new Date(myObj["pickupDate"]), new Date(formatDateString(formData.get("departure-date")))))
 
+            if (compareDates(myObj["pickupDate"], formatDateString(formData.get("departure-date"))) !== -1) {
+                alert("Departure date must be later than pickup date. Please try again.");
+                return;
+            }
+    
             myObj["destinationRegion"] = formData.get("region");
             myObj["destinationCity"] = formData.get("city");
             myObj["destinationBarangay"] = formData.get("barangay");
             myObj["destinationBuilding"] = formData.get("building");
             myObj["departureDate"] = formatDateString(formData.get("departure-date"));
             myObj["departureTime"] = convertMilitaryToStandard(formData.get("departure-time"));
-            if(formData.get("additional-info").trim != ""){
+
+            if (formData.get("additional-info").trim() !== "") {
                 myObj["departureAddInformation"] = formData.get("additional-info");
             }
-
+    
+            
+    
             const fullAddress = [
                 formData.get("region"),
                 formData.get("city"),
                 formData.get("barangay"),
                 formData.get("building")
             ].filter(Boolean).join(", ");
-            
+    
             myObj["destination_fullAddress"] = fullAddress;
-
+    
             localStorage.setItem("myFormData", JSON.stringify(myObj));
             window.location.href = '/form/3';
         });
     }
+    
 
     if(form3){
         form3.addEventListener("submit", async (e) => {
@@ -198,7 +210,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (additionalInfoElement && myObj["departureAddInformation"].trim() != "") {
         document.getElementById("add-info").style.display = "";
         additionalInfoElement.textContent = myObj["departureAddInformation"];
-    } else {
+    } 
+    else if(additionalInfoElement) {
         document.getElementById("add-info").style.display = "none";
     }
 });
@@ -259,3 +272,15 @@ function convertMilitaryToStandard(timeString) {
   
     return `${hours}:${minutes} ${period}`;
 }
+
+function compareDates(date1, date2) {
+
+    if (date1 < date2) {
+        return -1;
+    } else if (date1 > date2) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
