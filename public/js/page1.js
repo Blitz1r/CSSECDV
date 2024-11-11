@@ -56,6 +56,10 @@ document.addEventListener("DOMContentLoaded", () => {
             myObj["pickupTime"] = convertMilitaryToStandard(formData.get("time"));
             myObj["pickupPassengers"] = formData.get("passengers");
 
+            if(myObj["pickupPassengers"] <= 11){
+                alert("Insufficient passengers. Only 12 passengers or above to book a bus.")
+                return
+            }
 
             const fullAddress = [
                 formData.get("region"),
