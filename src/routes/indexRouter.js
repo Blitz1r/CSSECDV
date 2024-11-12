@@ -43,6 +43,8 @@ router.get("/editdb", async (req, res) => {
 
 router.post('/editdb', formController.filterView);
 
+router.get('/editdb/:id/edit', formController.editSelected);
+
 router.post('/editdb/delete', formController.deleteSelected);
 
 router.post("/submit-details", formController.submit_details);

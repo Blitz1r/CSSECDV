@@ -99,6 +99,21 @@ const formController = { // Added the equal sign here
         }
     },
 
+    async editSelected (req, res) {
+        try {
+            const id = req.params.id; 
+            console.log('id:', id); 
+            if (!id) {
+                return res.status(400).send('id is missing');
+            }
+
+            //res.redirect(req.get('Referrer') || '/editdb');
+        } catch (err) {
+            console.error(err);
+            return res.status(500).json({ message: 'Server error' });
+        }
+    },
+
     async deleteSelected (req, res) {
         try {
             const ids = req.body.ids; 

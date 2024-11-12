@@ -33,6 +33,7 @@
                                 <th>Contact No.</th>
                                 <th>Email</th>
                                 <th>Additional Info</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -50,14 +51,14 @@
                                 <td>{{this.contactNumber}}</td>
                                 <td>{{this.contactEmail}}</td>
                                 <td>{{this.departureAddInformation}}</td>
+                                <td><button type="button" class="edit-button" onclick="changeFormMethodAndAction('GET', '/editdb/{{this._id}}/edit')">Edit</button></td>
                             </tr>
                             {{/each}}
                         </tbody>
                     </table>
                 </div>
                 <div class="edit-options">
-                    <button type="button" class="edit-button" onclick="submitForm('/editdb/edit')">Edit</button>
-                    <button type="button" class="delete-button" onclick="submitForm('/editdb/delete')">Delete</button>
+                    <button type="button" class="delete-button" onclick="changeFormMethodAndAction('POST', '/editdb/delete')">Delete</button>
                 </div>
             </form>
         </div>
@@ -65,10 +66,17 @@
 </body>
 
 <script>
-    function submitForm(action) {
-        const form = document.getElementById('edit-form');
-        form.action = action;
-        form.submit();
+function changeFormMethodAndAction(method, action) {
+    const form = document.querySelector('#edit-form');
+    
+    if (!form) {
+        console.error('Form with id "edit-form" not found!');
+        return;
     }
+
+    form.method = method;
+    form.action = action;
+    form.submit();
+}
 </script>
 
