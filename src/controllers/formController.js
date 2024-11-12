@@ -23,6 +23,12 @@ const formController = { // Added the equal sign here
         })
     },
 
+    getPage4: (req, res) => {
+        res.render("page4", {
+            title: "Submission Success!",
+        })
+    },
+
     getFormSummary: (req, res) => {
         res.render("formSummary", {
             title: "Form Summary",

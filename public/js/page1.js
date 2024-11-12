@@ -56,6 +56,10 @@ document.addEventListener("DOMContentLoaded", () => {
             myObj["pickupTime"] = convertMilitaryToStandard(formData.get("time"));
             myObj["pickupPassengers"] = formData.get("passengers");
 
+            if(myObj["pickupPassengers"] <= 11){
+                alert("Insufficient passengers. Only 12 passengers or above to book a bus.")
+                return
+            }
 
             const fullAddress = [
                 formData.get("region"),
@@ -71,46 +75,58 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.setItem("myFormData", JSON.stringify(myObj));
             
             // Redirect to another page
-            window.location.href = '/page2';
+            window.location.href = '/form/2';
         });
     }
 
 
-    if(form2){
+    if (form2) {
         form2.addEventListener("submit", async (e) => {
             e.preventDefault();
-
+    
             const formData = new FormData(form2);
-
             const storedData = localStorage.getItem("myFormData");
-
+            let myObj = {};
+    
             if (storedData) {
                 myObj = JSON.parse(storedData);
             }
+            // console.log("Pick-up:", new Date(myObj["pickupDate"]))
+            // console.log("Departure:", new Date(formatDateString(formData.get("departure-date"))))
+            // console.log("Compare: ", compareDates(new Date(myObj["pickupDate"]), new Date(formatDateString(formData.get("departure-date")))))
 
+            if (compareDates(myObj["pickupDate"], formatDateString(formData.get("departure-date"))) !== -1) {
+                alert("Departure date must be later than pickup date. Please try again.");
+                return;
+            }
+    
             myObj["destinationRegion"] = formData.get("region");
             myObj["destinationCity"] = formData.get("city");
             myObj["destinationBarangay"] = formData.get("barangay");
             myObj["destinationBuilding"] = formData.get("building");
             myObj["departureDate"] = formatDateString(formData.get("departure-date"));
             myObj["departureTime"] = convertMilitaryToStandard(formData.get("departure-time"));
-            if(formData.get("additional-info").trim != ""){
+
+            if (formData.get("additional-info").trim() !== "") {
                 myObj["departureAddInformation"] = formData.get("additional-info");
             }
-
+    
+            
+    
             const fullAddress = [
                 formData.get("region"),
                 formData.get("city"),
                 formData.get("barangay"),
                 formData.get("building")
             ].filter(Boolean).join(", ");
-            
+    
             myObj["destination_fullAddress"] = fullAddress;
-
+    
             localStorage.setItem("myFormData", JSON.stringify(myObj));
-            window.location.href = '/page3';
+            window.location.href = '/form/3';
         });
     }
+    
 
     if(form3){
         form3.addEventListener("submit", async (e) => {
@@ -195,24 +211,35 @@ document.addEventListener("DOMContentLoaded", () => {
         emailElement.textContent = myObj["contactEmail"];
     }
     
-    if (additionalInfoElement) {
+    if (additionalInfoElement && myObj["departureAddInformation"].trim() != "") {
+        document.getElementById("add-info").style.display = "";
         additionalInfoElement.textContent = myObj["departureAddInformation"];
+    } 
+    else if(additionalInfoElement) {
+        document.getElementById("add-info").style.display = "none";
     }
-    
-
 });
 
 
-function sendDataToDB(){
+function sendDataToDB() {
     const storedData = localStorage.getItem("myFormData");
+    let myObj = null;
+
     if (storedData) {
-        myObj = JSON.parse(storedData);
+        try {
+            myObj = JSON.parse(storedData);
+        } catch (error) {
+            console.error("Failed to parse stored data:", error);
+            alert("Invalid data format.");
+            return;
+        }
+    } else {
+        alert("No data found to send.");
+        return;
     }
 
-
-    // console.log(myObj)
+    console.log(myObj);
     const jString = JSON.stringify(myObj);
-
 
     fetch("/submit-details", {
         method: 'POST',
@@ -223,18 +250,16 @@ function sendDataToDB(){
     })
     .then(response => {
         if (response.status === 201) {
-            alert("Success!")
-            // windows.location = "/page1";
+            window.location = "/form/4";
         } else {
-            alert("Error.");
+            alert("Error: " + response.statusText);
         }
     })
     .catch(error => {
         console.error("Request failed", error);
-        alert("An unexpected error occurred.");
+        alert("An unexpected error occurred. Please try again.");
     });
 }
-
 
 
 function formatDateString(dateString) {
@@ -251,3 +276,15 @@ function convertMilitaryToStandard(timeString) {
   
     return `${hours}:${minutes} ${period}`;
 }
+
+function compareDates(date1, date2) {
+
+    if (date1 < date2) {
+        return -1;
+    } else if (date1 > date2) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+

@@ -94,7 +94,8 @@ const formSchema = new mongoose.Schema({
         required: true
     },
     departureAddInformation: { 
-        type: String
+        type: String,
+        default: "N/A"
     },   
 
     //Contact Information
