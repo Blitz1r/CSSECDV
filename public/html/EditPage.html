@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Entry</title>
+    <link rel="stylesheet" href="../css/database.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar" id="sidebar">
+            <div class="logo">LOGO</div>
+            <ul class="menu">
+                <li><a href="#" class="menu-item" onclick="window.location.href='Database.html'">Database</a></li>
+                <li><a href="#" class="menu-item active" onclick="window.location.href='Edit.html'">Edit Database</a></li>
+                <li><a href="#" class="menu-item" onclick="window.location.href='Calendar.html'">Calendar</a></li>
+            </ul>
+            <button class="toggle-btn" onclick="sidebar()"><image src="sidebar-btn.png" width="30px" height="25px"></image></button>
+        </div>
+        <div class="main-content">
+            <div class="header">
+                <h1>Edit Entry</h1>
+                <div class="user-profile">
+                    <span class="user-name">admin</span>
+                    <div class="user-avatar"></div>
+                </div>
+            </div>
+            <div class="form-container">
+                <div class="form-group">
+                    <label for="location">Location:</label>
+                    <input type="text" class="edit-entry" name="location" value="DLSU, Taft, Manila">
+                </div>
+                <div class="form-group">
+                    <label for="destination">Destination:</label>
+                    <input type="text" class="edit-entry" name="destination" value="Tagaytay City">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="pickup-date">Pickup Date:</label>
+                        <input type="date" class="edit-entry" name="pickup-date" value="2024-11-07">
+                    </div>
+                    <div class="form-group">
+                        <label for="pickup-time">Pickup Time:</label>
+                        <input type="time" class="edit-entry" name="pickup-time" value="07:30">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="departure-date">Departure Date:</label>
+                        <input type="date" class="edit-entry" name="departure-date" value="2024-11-07">
+                    </div>
+                    <div class="form-group">
+                        <label for="departure-time">Departure Time:</label>
+                        <input type="time" class="edit-entry" name="departure-time" value="08:00">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="return-date">Return Date:</label>
+                    <input type="date" class="edit-entry" name="return-date" value="2024-11-09">
+                </div>
+                <div class="form-group">
+                    <label for="passengers">Passengers:</label>
+                    <input type="number" class="edit-entry" name="passengers" value="14">
+                </div>
+                <div class="form-group">
+                    <label for="contact">Contact No.:</label>
+                    <input type="tel" class="edit-entry" name="contact" value="+639123456789">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" class="edit-entry" name="email" value="admin@gmail.com">
+                </div>
+                <div class="form-group">
+                    <label for="additional-info">Additional Info:</label>
+                    <textarea class="edit-entry" name="additional-info">Private tour for a corporate group</textarea>
+                </div>
+
+                <div class="form-options">
+                    <div class="form-buttons">
+                        <button type="submit" class="edit-button">Save Changes</button>
+                        <button type="button" class="cancel-button" onclick="window.location.href='Edit.html'">Cancel</button>
+                    </div>
+                    <button type="button" class="right-button">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/calendar.js"></script>
+</body>
+
+</html>

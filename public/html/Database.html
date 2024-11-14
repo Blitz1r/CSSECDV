@@ -8,13 +8,14 @@
 </head>
 <body>
     <div class="container">
-        <div class="sidebar">
+        <div class="sidebar" id="sidebar">
             <div class="logo">LOGO</div>
             <ul class="menu">
                 <li><a href="#" class="menu-item active" onclick="window.location.href='Database.html'">Database</a></li>
                 <li><a href="#" class="menu-item" onclick="window.location.href='Edit.html'">Edit Database</a></li>
                 <li><a href="#" class="menu-item" onclick="window.location.href='Calendar.html'">Calendar</a></li>
             </ul>
+            <button class="toggle-btn" onclick="sidebar()"><image src="sidebar-btn.png" width="30px" height="25px"></image></button>
         </div>
 
         <div class="main-content">
@@ -70,5 +71,6 @@
             </div>
         </div>
     </div>
+    <script src="../js/calendar.js"></script>
 </body>
 </html>
