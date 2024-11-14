@@ -35,6 +35,12 @@ const formController = { // Added the equal sign here
         })
     },
 
+    getCalendar: (req, res) => {
+        res.render("calendar", {
+            title: "Calendar View",
+        })
+    },
+
     async filterView (req, res) {
         try {
             const { sortOptions, fromDate, toDate, search } = req.body;

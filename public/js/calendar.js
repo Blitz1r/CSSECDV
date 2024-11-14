@@ -12,6 +12,7 @@ const bookings = [
     { date: new Date(currentYear, currentMonth, 7), time: '8:00 AM', description: 'Tagaytay City', type: 'departure' },
     { date: new Date(currentYear, currentMonth, 15), time: '2:00 PM', description: 'WH Taft', type: 'pickup' },
     { date: new Date(currentYear, currentMonth, 25), time: '9:00 AM', description: 'Baguio City', type: 'departure' },
+    { date: new Date(currentYear, currentMonth, 25), time: '9:00 AM', description: 'Baguio City', type: 'departure' },
 ];
 
 function calendar() {
