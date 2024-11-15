@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Front Page</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<div class="booking-container">
+    <h2>Choose an Option</h2>
+    <div class="option-card">
+        <h3>Book a Rental</h3>
+        <p>Want to rent a bus? Select your pickup and destination, and we'll rent you a bus for your travels!</p>
+        <button class="option-button" onclick="window.location.href='Page1.html'">Get a Quote</button>
+    </div>
+
+    <div class="option-card">
+        <h3>Track Booking</h3>
+        <p>Already booked? Enter your reference number to track your booking status.</p>
+        <div class="track-booking">
+            <input type="text" id="ref-no" placeholder="Enter Reference Number">
+            <button class="option-button">Track</button>
+        </div>
+    </div>
+</div>
+
+<div class="booking-container faq-section">
+    <h3>Frequently Asked Questions (FAQ)</h3>
+
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleAnswer(this)">How can I rent a bus with Haranah Tours?</div>
+        <div class="faq-answer">Please fill in this short form to receive a commitment-free quote from us within 3 business hours.
+            https://www.haranahtours.net/rent-a-bus</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleAnswer(this)">How do I reschedule my booking?</div>
+        <div class="faq-answer">To reschedule your booking, please contact our support team at least 24 hours in advance. They will assist you with the new arrangements.
+            https://www.haranahtours.net/contact-us
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleAnswer(this)">Where are you located?</div>
+        <div class="faq-answer">We are located in Rm 502 West City Plaza Bldg, 66 West Avenue, Quezon City, Metro Manila, Philippines.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleAnswer(this)">How do I contact customer support?</div>
+        <div class="faq-answer">You may contact us through our website contact form, mobile (+63-917-113-5184), telephone (02) 8364-9462, or email at sales@haranahtours.net</div>
+    </div>
+</div>
+
+<script>
+    function toggleAnswer(element) {
+        const answer = element.nextElementSibling;
+        answer.style.display = answer.style.display === 'none' || answer.style.display === '' ? 'block' : 'none';
+    }
+</script>
+
+</body>
+</html>

@@ -175,3 +175,109 @@ button.submit-button:hover {
 .hyperlink:hover {
     color: #0e284f
 }
+
+.booking-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #FFF;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.booking-container h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #1A4789;
+    margin-bottom: 30px;
+}
+
+.option-card {
+    background-color: #F4F4F4;
+    padding: 20px;
+    border: 1px solid #DDD;
+    border-radius: 8px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.option-card h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.option-card p {
+    color: #555;
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+
+.option-button {
+    padding: 10px 20px;
+    background-color: #0D325F;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    transition: background 0.3s ease;
+}
+
+.option-button:hover {
+    background-color: #1E4E82;
+}
+
+.track-booking {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+#ref-no {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+    width: 60%;
+    background-color: #FFF;
+}
+
+#ref-no::placeholder {
+    color: #9C9C9C;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.faq-section {
+    margin-top: 40px;
+    text-align: left;
+}
+
+.faq-section h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #0D325F;
+    margin-bottom: 20px;
+}
+
+.faq-item {
+    margin-bottom: 15px;
+}
+
+.faq-question {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.faq-answer {
+    display: none;
+    color: #555;
+    padding-left: 10px;
+}
