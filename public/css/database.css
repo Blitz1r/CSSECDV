@@ -194,7 +194,7 @@ table td:nth-child(10) {
     white-space: pre-wrap;
 }
 
-.box, #from-date, #to-date {
+.box, #fromDate, #to-date {
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
