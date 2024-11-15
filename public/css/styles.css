@@ -281,3 +281,74 @@ button.submit-button:hover {
     color: #555;
     padding-left: 10px;
 }
+
+.status-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #FFF;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.status-container h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #0D325F;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.status-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.status-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid #DDD;
+    border-radius: 5px;
+    background-color: #F4F4F4;
+}
+
+.status-item .label {
+    font-weight: bold;
+    color: #333;
+}
+
+.status-item .value {
+    color: #555;
+}
+
+.status-message {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #0D325F;
+}
+
+.back-button {
+    display: block;
+    margin: 30px auto;
+    padding: 10px 20px;
+    background-color: #0D325F;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-align: center;
+    width: 200px;
+    transition: background 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #1E4E82;
+}
