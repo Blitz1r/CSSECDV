@@ -111,13 +111,17 @@ const formController = { // Added the equal sign here
         }
     },
 
-    async editSelected (req, res) {
+    async loadEditSelected (req, res) {
         try {
             const id = req.params.id; 
             console.log('id:', id); 
             if (!id) {
                 return res.status(400).send('id is missing');
             }
+            const form = await Form.findById({_id:id});
+            //res.send(post);
+            console.log(form);
+            res.render('editPage', {editForm:form});
 
             //res.redirect(req.get('Referrer') || '/editdb');
         } catch (err) {
@@ -201,7 +205,7 @@ const formController = { // Added the equal sign here
             try {
                 // Create a new user instance with the constructed user object
                 await Form.create(formData);
-
+                console.log('Form created successfully:', formData)
                 // Respond with a sendStatus code and message
                 return res.sendStatus(201);
             } catch (creationError) {

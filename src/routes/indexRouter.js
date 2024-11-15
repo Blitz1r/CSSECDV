@@ -49,7 +49,7 @@ router.get("/editdb", async (req, res) => {
 
 router.post('/editdb', formController.filterView);
 
-router.get('/editdb/:id/edit', formController.editSelected);
+router.get('/editdb/:id/edit', formController.loadEditSelected);
 
 router.post('/editdb/delete', formController.deleteSelected);
 

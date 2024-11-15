@@ -1,0 +1,81 @@
+{{log editForm}}
+<title>Edit Entry</title>
+<link rel="stylesheet" href="/css/database.css">
+
+<body>
+    <div class="container">
+        {{>sidebar}}
+
+        <div class="main-content">
+            <div class="header">
+                <h1>Edit Entry</h1>
+                <div class="user-profile">
+                    <span class="user-name">admin</span>
+                    <div class="user-avatar"></div>
+                </div>
+            </div>
+                <div class="form-container">
+                    <div class="form-group">
+                        <label for="location">Location:</label>
+                        <input type="text" class="edit-entry" name="location" value="{{editForm.pickupAddress}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="destination">Destination:</label>
+                        <input type="text" class="edit-entry" name="destination" value="{{editForm.destinationAddress}}">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="pickup-date">Pickup Date:</label>
+                            <input type="date" class="edit-entry" name="pickup-date" value="{{editForm.pickupDate}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="pickup-time">Pickup Time:</label>
+                            <input type="time" class="edit-entry" name="pickup-time" value="{{editForm.pickupTime}}">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="departure-date">Departure Date:</label>
+                            <input type="date" class="edit-entry" name="departure-date" value="{{editForm.departureDate}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="departure-time">Departure Time:</label>
+                            <input type="time" class="edit-entry" name="departure-time" value="{{editForm.departureTime}}">
+                        </div>
+                    </div>
+
+                    {{!-- <div class="form-group">
+                        <label for="return-date">Return Date:</label>
+                        <input type="date" class="edit-entry" name="return-date" value="2024-11-09">
+                    </div> --}}
+                    <div class="form-group">
+                        <label for="passengers">Passengers:</label>
+                        <input type="number" class="edit-entry" name="passengers" value="{{editForm.pickupPassengers}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="contact">Contact No.:</label>
+                        <input type="tel" class="edit-entry" name="contact" value="{{editForm.contactNumber}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="edit-entry" name="email" value="{{editForm.contactEmail}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="additional-info">Additional Info:</label>
+                        <textarea class="edit-entry" name="additional-info">{{editForm.departureAddInformation}}</textarea>
+                    </div>
+
+                    <div class="form-options">
+                        <div class="form-buttons">
+                            <button type="submit" class="edit-button">Save Changes</button>
+                            <button type="button" class="cancel-button" onclick="window.location.href='Edit.html'">Cancel</button>
+                        </div>
+                        <button type="button" class="right-button">Delete</button>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <script src="../js/calendar.js"></script>
+</body>
