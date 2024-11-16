@@ -38,7 +38,7 @@ const formSchema = new mongoose.Schema({
         get: (date) => {
             if (!date) return date;
             const timeZone = 'Asia/Manila'; 
-            const zonedDate = formatInTimeZone(date, timeZone, 'MM/dd/yyyy'); //HH:mm:ss
+            const zonedDate = formatInTimeZone(date, timeZone, 'yyyy-MM-dd'); //HH:mm:ss
             return zonedDate;
             
             //const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
@@ -82,7 +82,7 @@ const formSchema = new mongoose.Schema({
         get: (date) => {
             if (!date) return date;
             const timeZone = 'Asia/Manila'; 
-            const zonedDate = formatInTimeZone(date, timeZone, 'MM/dd/yyyy'); //HH:mm:ss
+            const zonedDate = formatInTimeZone(date, timeZone, 'yyyy-MM-dd'); //HH:mm:ss
             return zonedDate;
             
             //const options = { year: 'numeric', month: '2-digit', day: '2-digit' };

@@ -3,7 +3,14 @@ const Form = require('../models/form.js');
 
 const { formatInTimeZone } = require('date-fns-tz');
 
-const formController = { // Added the equal sign here
+const formController = { 
+
+    convertTo24Hour(timeString) {
+        let date = new Date(`01/01/2022 ${timeString}`);
+        let options = { hour: '2-digit', minute: '2-digit', hour12: false };
+        let formattedTime = new Intl.DateTimeFormat('en-GB', options).format(date);
+        return formattedTime;
+    },
     
     getPage1: (req, res) => {
         res.render("page1", {
@@ -119,7 +126,8 @@ const formController = { // Added the equal sign here
                 return res.status(400).send('id is missing');
             }
             const form = await Form.findById({_id:id});
-            //res.send(post);
+            form.pickupTime = formController.convertTo24Hour(form.pickupTime);
+            form.departureTime = formController.convertTo24Hour(form.departureTime);
             console.log(form);
             res.render('editPage', {editForm:form});
 
