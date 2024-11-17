@@ -51,6 +51,8 @@ router.post('/editdb', formController.filterView);
 
 router.get('/editdb/:id/edit', formController.loadEditSelected);
 
+router.post('/editdb/:id/edit', formController.postEditSelected);
+
 router.post('/editdb/delete', formController.deleteSelected);
 
 router.post("/submit-details", formController.submit_details);

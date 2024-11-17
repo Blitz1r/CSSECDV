@@ -1,16 +1,16 @@
 const mongoose = require('mongoose');
 const Form = require('../models/form.js');
 
-const { formatInTimeZone } = require('date-fns-tz');
+//const { formatInTimeZone } = require('date-fns-tz');
 
 const formController = { 
 
-    convertTo24Hour(timeString) {
-        let date = new Date(`01/01/2022 ${timeString}`);
-        let options = { hour: '2-digit', minute: '2-digit', hour12: false };
-        let formattedTime = new Intl.DateTimeFormat('en-GB', options).format(date);
-        return formattedTime;
-    },
+    // convertTo24Hour(timeString) {
+    //     let date = new Date(`01/01/2022 ${timeString}`);
+    //     let options = { hour: '2-digit', minute: '2-digit', hour12: false };
+    //     let formattedTime = new Intl.DateTimeFormat('en-GB', options).format(date);
+    //     return formattedTime;
+    // },
     
     getPage1: (req, res) => {
         res.render("page1", {
@@ -126,8 +126,7 @@ const formController = {
                 return res.status(400).send('id is missing');
             }
             const form = await Form.findById({_id:id});
-            form.pickupTime = formController.convertTo24Hour(form.pickupTime);
-            form.departureTime = formController.convertTo24Hour(form.departureTime);
+
             console.log(form);
             res.render('editPage', {editForm:form});
 
@@ -137,6 +136,44 @@ const formController = {
             return res.status(500).json({ message: 'Server error' });
         }
     },
+
+    async postEditSelected (req, res) {
+        try {
+            const id = req.params.id;
+            console.log(req.body);
+            
+            const updatedData = {
+                pickupAddress,
+                destinationAddress,
+                pickupDate,
+                pickupTime,
+                pickupPassengers,
+                departureDate,
+                departureTime,
+                contactCompanyName,
+                pickupPassengers,
+                contactNumber,
+                contactEmail,
+                departureAddInformation
+            } = req.body;
+
+            const form = await Form.findById(id); 
+            if (!form) {
+                return res.status(404).send('Form not found');
+            }
+
+            // Update the form data
+            await Form.updateOne({ _id: id }, updatedData);
+
+            console.log('Form updated successfully:', updatedData);
+            res.redirect(req.get('Referrer') || '/editdb/:id/edit');
+            
+        } catch (error) {
+            return res.sendStatus(404);
+        }
+        
+    },
+
 
     async deleteSelected (req, res) {
         try {
