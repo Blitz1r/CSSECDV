@@ -67,28 +67,45 @@ const formController = {
                     query.pickupDate.$lte = new Date(zonedDate);
                 }
             }
-
-            // if (search) {
-            //     query.$or = [
-            //         { pickupLocation: { $regex: search, $options: 'i' } },
-            //         { pickupDate: { $regex: search, $options: 'i' } }
-            //     ];
-            // }
     
             if (search) {
                 const searchDate = new Date(search);
+
                 if (!isNaN(searchDate.getTime())) {
+                    const timeZone = 'Asia/Singapore';
+
+                    const startOfDay = new Date(searchDate.toLocaleString('en-US', { timeZone }));
+                    startOfDay.setHours(0, 0, 0, 0); 
+
+                    const endOfDay = new Date(startOfDay);
+                    endOfDay.setHours(23, 59, 59, 999);  
+
                     query.$or = [
-                        { pickupDate: searchDate },
-                        { departureDate: searchDate }
+                        {
+                            pickupDate: {
+                                $gte: startOfDay, 
+                                $lte: endOfDay   
+                            }
+                        },
+                        {
+                            departureDate: {
+                                $gte: startOfDay, 
+                                $lte: endOfDay   
+                            }
+                        }
                     ];
                 } else {
+                    const escapeRegex = (str) => {
+                        return str.replace(/[.*+?^=!:${}()|\[\]\/\\]/g, '\\$&'); 
+                    };
+
+                    const escapedSearch = escapeRegex(search); // Escape special characters
                     query.$or = [
-                        { pickupAddress: { $regex: search, $options: 'i' } },
-                        { contactCompanyName: { $regex: search, $options: 'i' } },
-                        { destinationAddress: { $regex: search, $options: 'i' } },
-                        { contactNumber: { $regex: search, $options: 'i' } }, //do not include country code
-                        { contactEmail: { $regex: search, $options: 'i' } }
+                        { pickupAddress: { $regex: escapedSearch, $options: 'i' } },
+                        { contactCompanyName: { $regex: escapedSearch, $options: 'i' } },
+                        { destinationAddress: { $regex: escapedSearch, $options: 'i' } },
+                        { contactNumber: { $regex: escapedSearch, $options: 'i' } }, 
+                        { contactEmail: { $regex: escapedSearch, $options: 'i' } }
                     ];
                 }
             }
