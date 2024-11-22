@@ -2,15 +2,7 @@
 
 <body>
     <div class="container">
-        <div class="sidebar">
-            <div class="logo">LOGO</div>
-            <ul class="menu">
-                <li><a href="#" class="menu-item active" onclick="window.location.href='/dbview'">Database</a></li>
-                <li><a href="#" class="menu-item" onclick="window.location.href='/editdb'">Edit Database</a></li>
-                <li><a href="#" class="menu-item" onclick="window.location.href='/dbview/calendar'">Calendar</a></li>
-            </ul>
-        </div>
-
+        {{>sidebar}}
         <div class="main-content">
             <form id="filter-form" action="/editdb" method="post">
                 {{>header}}
