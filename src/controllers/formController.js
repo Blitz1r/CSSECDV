@@ -69,17 +69,19 @@ const formController = {
             }
     
             if (search) {
-                const searchDate = new Date(search);
-
+                let trimmedSearch = search.trim().replace(/\s+/g, ' ');
+            
+                const searchDate = new Date(trimmedSearch);
+            
                 if (!isNaN(searchDate.getTime())) {
                     const timeZone = 'Asia/Singapore';
-
+            
                     const startOfDay = new Date(searchDate.toLocaleString('en-US', { timeZone }));
                     startOfDay.setHours(0, 0, 0, 0); 
-
+            
                     const endOfDay = new Date(startOfDay);
                     endOfDay.setHours(23, 59, 59, 999);  
-
+            
                     query.$or = [
                         {
                             pickupDate: {
@@ -98,8 +100,8 @@ const formController = {
                     const escapeRegex = (str) => {
                         return str.replace(/[.*+?^=!:${}()|\[\]\/\\]/g, '\\$&'); 
                     };
-
-                    const escapedSearch = escapeRegex(search); // Escape special characters
+            
+                    const escapedSearch = escapeRegex(trimmedSearch); 
                     query.$or = [
                         { pickupAddress: { $regex: escapedSearch, $options: 'i' } },
                         { contactCompanyName: { $regex: escapedSearch, $options: 'i' } },
