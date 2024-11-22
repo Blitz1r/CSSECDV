@@ -177,7 +177,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (pickUpElement) {
-        console.log(myObj);
+        // console.log(myObj);
         pickUpElement.textContent = myObj["pickup_fullAddress"];
         delete myObj["pickup_fullAddress"];
     }
