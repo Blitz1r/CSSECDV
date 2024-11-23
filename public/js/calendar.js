@@ -207,5 +207,25 @@ async function getformData(){
 document.addEventListener('DOMContentLoaded', async function() {
     await getformData();
     calendar();
+
+    const pageTitle = document.title.split(' ')[0]; // Get the current page title
+    const menuItems = document.querySelectorAll('.menu-item');
+
+    console.log("Page title: " + pageTitle);
+
+    console.log("Menu items:");
+    menuItems.forEach(item => {
+        console.log(pageTitle === item.textContent); // Logs true if they match, false otherwise
+    });
+    
+
+    menuItems.forEach(item => {
+        // Check if the title matches the link text or a part of the URL
+        if (pageTitle === item.textContent) {
+            item.classList.add('active');
+        } else {
+            item.classList.remove('active');
+        }
+    });
 });
 
