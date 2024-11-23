@@ -62,6 +62,18 @@ const formController = {
         });
     },
 
+    getLogin: (req, res) => {
+        res.render("login", {
+            title: "Log in",
+        })
+    },
+
+    getSignUp: (req, res) => {
+        res.render("signup", {
+            title: "Sign up",
+        })
+    },
+
     async filterView (req, res) {
         try {
             const { sortOptions, fromDate, toDate, search } = req.body;

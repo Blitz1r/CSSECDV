@@ -23,7 +23,9 @@ router.get('/form/4', formController.getPage4);
 
 router.get('/dbview/calendar', formController.getCalendar);
 
+router.get('/dbview/login', formController.getLogin);
 
+router.get('/dbview/signup', formController.getSignUp);
 
 router.get("/dbview", async (req, res) => {
     const bookingData = await form.find().sort({'formNumber' : -1});
