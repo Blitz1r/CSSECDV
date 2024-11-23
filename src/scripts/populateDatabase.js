@@ -7,9 +7,20 @@ const account = require('../models/account.js');
 
 
 
+
 const sampleFormData = require('./sampleData/sampleFormData.js');
 const sampleAccountData = require('./sampleData/sampleAccountData.js');
 
+
+async function hashPassword(password){
+    const saltRounds = 10;
+    try {
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+        return hashedPassword;
+      } catch (error) {
+        console.error('Error hashing password:', error);
+      }
+}
 
 async function dropDatabase() {
     try {
@@ -42,9 +53,14 @@ async function populateDatabase() {
 
         // Populate account data
         for (const accountData of sampleAccountData) {
+            // Hash the password before saving
+            accountData.password = await hashPassword(accountData.password);
+        
+            // Create a new instance of Account and save it to the database
             const Account = new account(accountData);
             await Account.save();
         }
+        
 
         console.log('Database: Population function completed');
     } catch (error) {
