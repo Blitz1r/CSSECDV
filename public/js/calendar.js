@@ -5,13 +5,15 @@ let currentDate = new Date();
 let currentMonth = currentDate.getMonth();
 let currentYear = currentDate.getFullYear();
 let isWeeklyView = false;
-//Sample bookings
-const bookings = [
-    { date: new Date(currentYear, currentMonth, 7), time: '7:30 AM', description: 'Private tour for a corporate group', type: 'pickup' },
-    { date: new Date(currentYear, currentMonth, 7), time: '8:00 AM', description: 'Tagaytay City', type: 'departure' },
-    { date: new Date(currentYear, currentMonth, 15), time: '2:00 PM', description: 'WH Taft', type: 'pickup' },
-    { date: new Date(currentYear, currentMonth, 25), time: '9:00 AM', description: 'Baguio City', type: 'departure' },
-];
+
+// const bookings = [
+//     { date: new Date(currentYear, currentMonth, 7), time: '7:30 AM', companyName: 'Private tour for a corporate group', type: 'pickup' },
+//     { date: new Date(currentYear, currentMonth, 7), time: '8:00 AM', companyName: 'Tagaytay City', type: 'departure' },
+//     { date: new Date(currentYear, currentMonth, 15), time: '2:00 PM', companyName: 'WH Taft', type: 'pickup' },
+//     { date: new Date(currentYear, currentMonth, 25), time: '9:00 AM', companyName: 'Baguio City', type: 'departure',  },
+// ];
+
+const bookings = [];
 
 function calendar() {
     const calendar = document.getElementById('calendar');
@@ -32,14 +34,14 @@ function MonthlyView() {
     const calendar = document.getElementById('calendar');
     calendar.style.gridTemplateColumns = 'repeat(7, 1fr)';
     calendar.innerHTML = `
-<div class="calendar-top"><strong>Sunday</strong></div>
-<div class="calendar-top"><strong>Monday</strong></div>
-<div class="calendar-top"><strong>Tuesday</strong></div>
-<div class="calendar-top"><strong>Wednesday</strong></div>
-<div class="calendar-top"><strong>Thursday</strong></div>
-<div class="calendar-top"><strong>Friday</strong></div>
-<div class="calendar-top"><strong>Saturday</strong></div>
-`;
+        <div class="calendar-top"><strong>Sunday</strong></div>
+        <div class="calendar-top"><strong>Monday</strong></div>
+        <div class="calendar-top"><strong>Tuesday</strong></div>
+        <div class="calendar-top"><strong>Wednesday</strong></div>
+        <div class="calendar-top"><strong>Thursday</strong></div>
+        <div class="calendar-top"><strong>Friday</strong></div>
+        <div class="calendar-top"><strong>Saturday</strong></div>
+    `;
 
     for (let i = 0; i < firstDay; i++) {
         const emptyDiv = document.createElement('div');
@@ -57,7 +59,7 @@ function MonthlyView() {
             if (booking.date.getDate() === day && booking.date.getMonth() === currentMonth && booking.date.getFullYear() === currentYear) {
                 const bookingDiv = document.createElement('div');
                 bookingDiv.classList.add('booking');
-                bookingDiv.textContent = `${booking.time} - ${booking.description} (${booking.type})`;
+                bookingDiv.textContent = `${booking.time} - ${booking.companyName} (${booking.type})`;
                 dayDiv.appendChild(bookingDiv);
             }
         });
@@ -111,7 +113,7 @@ function WeeklyView() {
             //bookings for the weekly view (can only display bookings without minutes)
             bookings.forEach(booking => {
                 if (booking.date.toDateString() === dayDate.toDateString() && booking.time === timeFormatted) {
-                    slotCell.textContent = `${booking.time} - ${booking.description} (${booking.type})`;
+                    slotCell.textContent = `${booking.time} - ${booking.companyName} (${booking.type})`;
                     slotCell.classList.add('has-booking');
                 }
             });
@@ -158,4 +160,52 @@ function setView(view) {
     calendar();
 }
 
-calendar();
+async function getformData(){
+    /** Needed info
+     * General info:
+     * contactCompanyName
+     * 
+     * For pickup:
+     * pickupTime
+     * pickupDate
+     * 
+     * For Destination:
+     * departureDate
+     * departureTime
+     * 
+     * 
+     * bookings.push({date: pickupDate, time: pickupTime, companyName: contactCompanyName, type: 'pickup'})
+     * bookings.push({date: departureDate, time: departureTime, companyName: contactCompanyName, type: 'departure'})
+     */
+
+    try {
+        const response = await fetch("/getFormData", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+
+        const data = await response.json();
+
+        for (let i = 0; i < data.length; i++) {
+            const dateObject1 = new Date(data[i].pickupDate);
+            const dateObject2 = new Date(data[i].departureDate);
+
+            bookings.push({ date: dateObject1, time: data[i].pickupTime, companyName: data[i].contactCompanyName, type: 'pickup' });
+            bookings.push({ date: dateObject2, time: data[i].departureTime, companyName: data[i].contactCompanyName, type: 'departure' });
+        }
+    } catch (error) {
+        console.error('There has been a problem with your fetch operation:', error);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', async function() {
+    await getformData();
+    calendar();
+});
+

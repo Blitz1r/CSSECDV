@@ -47,6 +47,8 @@ router.get("/editdb", async (req, res) => {
 
 router.post('/editdb', formController.filterView);
 
+router.post('/getFormData', formController.getFormData);
+
 router.get('/editdb/:id/edit', formController.loadEditSelected);
 
 router.post('/editdb/:id/edit', formController.postEditSelected);
