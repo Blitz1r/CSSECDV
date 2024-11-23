@@ -9,11 +9,7 @@ const router = Router();
 const formController = require('../controllers/formController.js');
 
 
-router.get("/", (req, res) => {
-    res.render("page1", {
-        title: "Page 1",
-    })
-});
+router.get('/', formController.getFrontPage);
 
 router.get('/form/1', formController.getPage1);
 

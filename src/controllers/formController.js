@@ -11,7 +11,12 @@ const formController = {
     //     let formattedTime = new Intl.DateTimeFormat('en-GB', options).format(date);
     //     return formattedTime;
     // },
-    
+    getFrontPage: (req, res) => {
+        res.render("frontPage", {
+            title: "Front Page",
+        });
+    },
+
     getPage1: (req, res) => {
         res.render("page1", {
             title: "Pick-up Information",
