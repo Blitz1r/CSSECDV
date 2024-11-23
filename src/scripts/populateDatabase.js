@@ -1,9 +1,19 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+
+
+
+
+
 const connectToMongo = require('./conn.js');
 const form = require('../models/form.js');
+const account = require('../models/account.js');
+
 
 
 const sampleFormData = require('./sampleData/sampleFormData.js');
+const sampleAccountData = require('./sampleData/sampleAccountData.js');
+
 
 async function dropDatabase() {
     try {
@@ -19,6 +29,7 @@ async function populateDatabase() {
     try {
         await dropDatabase();
 
+        // Populate form data
         for (const formData of sampleFormData) {
             // Convert date fields to "MM/DD/YYYY" format before saving
             if (formData.pickupDate instanceof Date) {
@@ -31,6 +42,12 @@ async function populateDatabase() {
             // Create a new instance of the form model and save it to the database
             const FormData = new form(formData);
             await FormData.save();
+        }
+
+        // Populate account data
+        for (const accountData of sampleAccountData) {
+            const Account = new account(accountData);
+            await Account.save();
         }
 
         console.log('Database: Population function completed');

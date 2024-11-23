@@ -309,6 +309,14 @@ const formController = {
         }
         
     },
+
+    async checkAccount(req, res) {
+        try {
+            
+        } catch (error) {
+            
+        }
+    },
 };
 
 module.exports = formController;

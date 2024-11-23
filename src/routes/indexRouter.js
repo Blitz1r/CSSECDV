@@ -3,6 +3,8 @@ const express = require('express');
 const Router = require('express');
 
 const form = require('../models/form.js');
+const account = require('../models/account.js');
+
 
 const router = Router();
 
@@ -56,6 +58,9 @@ router.post('/editdb/:id/edit', formController.postEditSelected);
 router.post('/editdb/delete', formController.deleteSelected);
 
 router.post("/submit-details", formController.submit_details);
+
+router.post("/checkAccount", formController.submit_details);
+
 
 
 module.exports = router;
