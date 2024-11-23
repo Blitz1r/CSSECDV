@@ -1,32 +1,33 @@
 <title>Calendar View</title>
 <link rel="stylesheet" href="/css/calendar.css">
-<body>
-    
 
-    <div class="sidebar" id="sidebar">
-        <div class="logo">LOGO</div>
+<body>
+    <div class="calendar-page">
+        <div class="sidebar" id="sidebar">
+            <div class="logo">LOGO</div>
             <ul class="menu">
                 <li><a href="#" class="menu-item " onclick="window.location.href='/dbview'">Database</a></li>
                 <li><a href="#" class="menu-item" onclick="window.location.href='/editdb'">Edit Database</a></li>
-                <li><a href="#" class="menu-item active" onclick="window.location.href='/dbview/calendar'">Calendar</a></li>
+                <li><a href="#" class="menu-item active" onclick="window.location.href='/dbview/calendar'">Calendar</a>
+                </li>
             </ul>
-        <button class="toggle-btn" onclick="sidebar()"><image src="/images/sidebar-btn.png" width="30px" height="25px"></image></button>
-    </div>
-
-    <div class="calendar-container">
-        <div class="calendar-header">
-            <button class="left" onclick="navigate(-1)">&#9664;</button>
-            <h1 id="month-year"></h1>
-            <button class="right" onclick="navigate(1)">&#9654;</button>
-            <button class="today-btn" onclick="today()">Today</button>
-            <div class="view-toggle">
-                <button onclick="setView('month')">Month</button>
-                <button onclick="setView('week')">Week</button>
-            </div>
+            <button class="toggle-btn" onclick="sidebar()"><image src="/images/sidebar-btn.png" width="30px" height="25px"></image></button>
         </div>
 
-        <div id="calendar" class="calendar"></div>
-    </div>
+        <div class="calendar-container">
+            <div class="calendar-header">
+                <button class="left" onclick="navigate(-1)">&#9664;</button>
+                <h1 id="month-year"></h1>
+                <button class="right" onclick="navigate(1)">&#9654;</button>
+                <button class="today-btn" onclick="today()">Today</button>
+                <div class="view-toggle">
+                    <button onclick="setView('month')">Month</button>
+                    <button onclick="setView('week')">Week</button>
+                </div>
+            </div>
 
+            <div id="calendar" class="calendar"></div>
+        </div>
+    </div>
     <script src="/js/calendar.js"></script>
 </body>
