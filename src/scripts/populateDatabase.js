@@ -1,10 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
-
-
-
-
 const connectToMongo = require('./conn.js');
 const form = require('../models/form.js');
 const account = require('../models/account.js');
