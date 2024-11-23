@@ -8,10 +8,14 @@
 }
 
 body {
-    display: flex;
     height: 100vh;
     background-color: #F4F4F4;
     color: #333;
+}
+
+.calendar-page {
+    display: flex;
+    height: 100vh;
 }
 
 .sidebar {
