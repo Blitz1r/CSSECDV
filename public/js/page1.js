@@ -31,16 +31,18 @@
 //     });
 // })
 
-let myObj = {};
 
 document.addEventListener("DOMContentLoaded", () => {
     const form1 = document.getElementById("page1-form");
     const form2 = document.getElementById("page2-form");
     const form3 = document.getElementById("page3-form");
 
-
-
     if(form1){
+        const today = new Date();
+        today.setDate(today.getDate() + 1);
+        const minDate = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+        document.getElementById('date').setAttribute('min', minDate);
+
         form1.addEventListener("submit", async (e) => {
             e.preventDefault();
 
@@ -81,16 +83,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     if (form2) {
+        const formData = new FormData(form2);
+        const storedData = localStorage.getItem("myFormData");
+        let myObj = {};
+
+        if (storedData) {
+            myObj = JSON.parse(storedData);
+        }
+        // console.log(myObj["pickupDate"]);
+
+        const [month, day, year] = myObj["pickupDate"].split('/');
+        const minDate = `${year}-${month.padStart(2, '0')}-${String(parseInt(day, 10) + 1).padStart(2, '0')}`;
+        document.getElementById('departure-date').setAttribute('min', minDate);
+
+        // console.log(minDate)
         form2.addEventListener("submit", async (e) => {
             e.preventDefault();
     
-            const formData = new FormData(form2);
-            const storedData = localStorage.getItem("myFormData");
-            let myObj = {};
-    
-            if (storedData) {
-                myObj = JSON.parse(storedData);
-            }
+            
             // console.log("Pick-up:", new Date(myObj["pickupDate"]))
             // console.log("Departure:", new Date(formatDateString(formData.get("departure-date"))))
             // console.log("Compare: ", compareDates(new Date(myObj["pickupDate"]), new Date(formatDateString(formData.get("departure-date")))))
@@ -143,10 +153,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if(formData.get("company-name").trim() != ""){
                 myObj["contactCompanyName"] = formData.get("company-name");
-            };
+            } 
+            
+            if(formData.get("company-name").trim().length < 2){
+                customAlert("Error. Please check the company name.")
+                return;
+            }
             const countryCode = formData.get("country-code");
             const contactNumber = formData.get("contact-number");
 
+
+            if(formData.get("contact-number").trim().length < 4){
+                customAlert("Error. Contact number can't be less than 4 digits.")
+                return;
+            }
             const fullContactNumber = `+${countryCode}${contactNumber}`;
             myObj["contactEmail"] = formData.get("email");
             myObj["contactNumber"] = fullContactNumber;

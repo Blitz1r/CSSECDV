@@ -101,7 +101,7 @@ const formSchema = new mongoose.Schema({
     //Contact Information
     contactCompanyName: { 
         type: String,
-        default: "N/A"
+        required: true,
     },
     contactEmail: {
         type: String,
