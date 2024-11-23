@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
             myObj["pickupPassengers"] = formData.get("passengers");
 
             if(myObj["pickupPassengers"] <= 11){
-                alert("Insufficient passengers. Only 12 passengers or above to book a bus.")
+                customAlert("Insufficient passengers. Only 12 passengers or above to book a bus.")
                 return
             }
 
@@ -287,4 +287,15 @@ function compareDates(date1, date2) {
         return 0;
     }
 }
+//* Custom Alert functions /
+function customAlert(message) {
+    document.getElementById('alertMessage').textContent = message;
+    document.getElementById('customAlert').style.display = 'block';
+}
+
+function closeCustomAlert() {
+    document.getElementById('customAlert').style.display = 'none';
+}
+//* End of Custom Alert functions /
+
 
