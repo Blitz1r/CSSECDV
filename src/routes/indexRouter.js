@@ -1,6 +1,7 @@
 // Essential libraries
 const express = require('express');
 const Router = require('express');
+const session = require('express-session');
 
 const form = require('../models/form.js');
 const account = require('../models/account.js');
@@ -10,6 +11,10 @@ const router = Router();
 
 const formController = require('../controllers/formController.js');
 
+// router.use((req, res, next) => {
+//     res.locals.username = req.session.username || null;
+//     next();
+// });
 
 router.get('/', formController.getFrontPage);
 
@@ -59,7 +64,7 @@ router.post('/editdb/delete', formController.deleteSelected);
 
 router.post("/submit-details", formController.submit_details);
 
-router.post("/checkAccount", formController.submit_details);
+router.post("/checkAccount", formController.checkAccount);
 
 
 

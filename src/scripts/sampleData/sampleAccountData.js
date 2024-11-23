@@ -1,8 +1,8 @@
 const sampleAccountData = [
     {
-        username: "john_doe",
-        password: "password123",
-        department: "Sales",
+        username: "test",
+        password: "test",
+        department: "test",
         deleted: false
     },
     {

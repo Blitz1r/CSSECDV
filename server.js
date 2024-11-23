@@ -6,7 +6,7 @@ const hbs = require('hbs');
 const bodyParser = require('body-parser');  
 const connectToMongo = require('./src/scripts/conn.js'); // Import function to connect to MongoDB
 const populateDatabase = require('./src/scripts/populateDatabase.js'); // Import function to populate database
-
+const session = require('express-session');
 //* ===========================
 
 //* ==========Routers==========
@@ -23,6 +23,14 @@ server.set('views', path.join(__dirname, 'views'));
 server.use(bodyParser.json()); 
 server.use(bodyParser.urlencoded({ extended: true })); 
 server.use(router);
+
+
+server.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: false, maxAge: 1209600000} // 2 weeks in milliseconds
+  }));
 
 async function database() {
     try {

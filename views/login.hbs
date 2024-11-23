@@ -4,12 +4,26 @@
 <div class="signup-container">
     <div class="form-box">
         <h1>Login</h1>
-        <form>
-            <input type="text" placeholder="Username" required>
-            <input type="password" placeholder="Password" required>
+        <form id="login_form" name="login">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
             <button type="submit">Log in</button>
         </form>
-        <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+        <p>Don't have an account? <a href="/dbview/signup">Sign Up</a></p>
     </div>
 </div>
 </body>
+
+{{!-- Custom Alert div --}}
+<div id="customAlert" class="custom-alert">
+    <div class="custom-alert-content">
+        <span class="close-btn" onclick="closeCustomAlert()">&times;</span>
+        <p id="alertMessage"></p>
+        <button onclick="closeCustomAlert()">OK</button>
+    </div>
+</div>
+{{!-- End of Custom Alert div --}}
+
+
+<script src="/js/login.js"></script>
+

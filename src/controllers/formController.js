@@ -1,7 +1,36 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+const session = require('express-session');
+
 const Form = require('../models/form.js');
+const Account = require('../models/account.js');
+
 
 //const { formatInTimeZone } = require('date-fns-tz');
+
+
+
+async function hashPassword(password){
+    const saltRounds = 10;
+    try {
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+        return hashedPassword;
+      } catch (error) {
+        console.error('Error hashing password:', error);
+      }
+}
+
+async function checkPassword(sentPassword, passwordFromDB) {
+    try {
+        return await bcrypt.compare(sentPassword, passwordFromDB);
+    } catch (error) {
+        console.error('Error comparing passwords:', error);
+        return false;
+    }
+}
+
+
+
 
 const formController = { 
 
@@ -312,9 +341,23 @@ const formController = {
 
     async checkAccount(req, res) {
         try {
-            
+            const username = req.body.username;
+            const password = req.body.password;
+    
+            const account = await Account.findOne({ username: username });
+            if (account) {
+                // Await the checkPassword function
+                if (await checkPassword(password, account.password)) {
+                    res.sendStatus(200); // OK - Credentials are valid
+                } else {
+                    res.sendStatus(401); // Unauthorized - Incorrect password
+                }
+            } else {
+                res.sendStatus(404); // Not Found - Account does not exist
+            }
         } catch (error) {
-            
+            console.error(error);
+            res.sendStatus(500); // Internal Server Error - Something went wrong
         }
     },
 };
