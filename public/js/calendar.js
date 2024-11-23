@@ -5,13 +5,11 @@ let currentDate = new Date();
 let currentMonth = currentDate.getMonth();
 let currentYear = currentDate.getFullYear();
 let isWeeklyView = false;
-
 //Sample bookings
 const bookings = [
     { date: new Date(currentYear, currentMonth, 7), time: '7:30 AM', description: 'Private tour for a corporate group', type: 'pickup' },
     { date: new Date(currentYear, currentMonth, 7), time: '8:00 AM', description: 'Tagaytay City', type: 'departure' },
     { date: new Date(currentYear, currentMonth, 15), time: '2:00 PM', description: 'WH Taft', type: 'pickup' },
-    { date: new Date(currentYear, currentMonth, 25), time: '9:00 AM', description: 'Baguio City', type: 'departure' },
     { date: new Date(currentYear, currentMonth, 25), time: '9:00 AM', description: 'Baguio City', type: 'departure' },
 ];
 

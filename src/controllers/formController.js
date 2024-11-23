@@ -48,9 +48,18 @@ const formController = {
     },
 
     getCalendar: (req, res) => {
-        res.render("calendar", {
-            title: "Calendar View",
+        Form.find() 
+        .then(forms => {
+            // console.log(forms);
+            res.render("calendar", {
+                title: "Calendar View",
+                forms: forms || []  
+            });
         })
+        .catch(error => {
+            console.error('Error fetching forms:', error);
+            res.status(500).send("Error fetching forms");
+        });
     },
 
     async filterView (req, res) {
