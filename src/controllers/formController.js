@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const session = require('express-session');
+const crypto = require('crypto');
 
 const Form = require('../models/form.js');
 const Account = require('../models/account.js');
@@ -8,7 +9,15 @@ const Account = require('../models/account.js');
 
 //const { formatInTimeZone } = require('date-fns-tz');
 
-
+function generateReferenceCode(length) {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let text = "";
+    for (let i = 0; i < length; i++) {
+        const randomIndex = crypto.randomInt(characters.length);
+        text += characters.charAt(randomIndex);
+    }
+    return text;
+}
 
 async function hashPassword(password){
     const saltRounds = 10;
@@ -293,9 +302,19 @@ const formController = {
             } = req.body;
             
             const formNumber = await Form.countDocuments() + 1;
-            
+
+            //uniqueCode = false;
+            // while (!uniqueCode) {
+            //     const referenceCode = generateReferenceCode(10);
+            //     const existingForm = await Form.findOne({ referenceCode: referenceCode });
+            //     if (!existingForm) {
+            //         uniqueCode = true;
+            //     }
+            // }
+
             const formData = {
                 formNumber: formNumber,
+                //referenceCode: referenceCode,
                 pickupRegion: pickupRegion,
                 pickupCity: pickupCity,
                 pickupBarangay: pickupBarangay,

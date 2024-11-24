@@ -9,6 +9,11 @@ const formSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
+    referenceCode: {
+        type: String,
+        //required: true,
+        unique: true
+    },
     pickupRegion: { 
         type: String,
         required: true
