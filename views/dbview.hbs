@@ -14,6 +14,7 @@
                     <thead>
                         <tr>
                             <th>Response Number</th>
+                            <th>Reference Code</th>
                             <th>Company name</th>
                             <th>Pick-up Location</th>
                             <th>Destination</th>
@@ -29,6 +30,7 @@
                         {{#each bookings}}
                         <tr>
                             <td>{{this.formNumber}}</td>
+                            <td>{{this.referenceCode}}</td>
                             <td>{{this.contactCompanyName}}</td>
                             <td>{{this.pickupAddress}}</td>
                             <td>{{this.destinationAddress}}</td>
