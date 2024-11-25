@@ -303,18 +303,22 @@ const formController = {
             
             const formNumber = await Form.countDocuments() + 1;
 
-            //uniqueCode = false;
-            // while (!uniqueCode) {
-            //     const referenceCode = generateReferenceCode(10);
-            //     const existingForm = await Form.findOne({ referenceCode: referenceCode });
-            //     if (!existingForm) {
-            //         uniqueCode = true;
-            //     }
-            // }
+            uniqueCode = false;
+            referenceCode = "";
+            
+            while (!uniqueCode) {
+                referenceCode = generateReferenceCode(10);
+                existingForm = await Form.findOne({ referenceCode: referenceCode });
+                if (!existingForm) {
+                    uniqueCode = true;
+                }
+            }
+
+            console.log('Generated Reference Code:', referenceCode);
 
             const formData = {
                 formNumber: formNumber,
-                //referenceCode: referenceCode,
+                referenceCode: referenceCode,
                 pickupRegion: pickupRegion,
                 pickupCity: pickupCity,
                 pickupBarangay: pickupBarangay,
