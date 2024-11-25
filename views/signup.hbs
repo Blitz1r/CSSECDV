@@ -8,14 +8,26 @@
         <form id="reg-form" name="reg-form">
             <input type="email" name="email" placeholder="Email" required>
             <input type="text" name="username" placeholder="Username" required>
-            <input type="password" name="password" placeholder="Password" required>
+            <input type="password" id="password" name="password" placeholder="Password" required>
             <input type="password" name="cpassword" placeholder="Confirm Password" required>
-            <button type="submit">Sign Up</button>
+
+             <div id="password-requirements" class="hidden">
+                <p>Your password must:</p>
+                <ul>
+                    <li id="length-requirement">Be at least 8 characters long</li>
+                    <li id="uppercase-requirement">Include at least one uppercase letter</li>
+                    <li id="number-requirement">Include at least one number</li>
+                    <li id="special-requirement">Include at least one special character</li>
+                </ul>
+            </div>
+
+            <button type="submit" id="submit">Sign Up</button>
         </form>
         <p>Already have an account? <a href="/dbview/login">Log In</a></p>
     </div>
 </div>
 </body>
+
 {{!-- Custom Alert div --}}
 <div id="customAlert" class="custom-alert">
     <div class="custom-alert-content">
