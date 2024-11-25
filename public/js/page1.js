@@ -38,6 +38,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const form3 = document.getElementById("page3-form");
 
     if(form1){
+        localStorage.clear();
+
         const today = new Date();
         today.setDate(today.getDate() + 1);
         const minDate = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
@@ -72,57 +74,38 @@ document.addEventListener("DOMContentLoaded", () => {
             ].filter(Boolean).join(", ");
             
             myObj["pickup_fullAddress"] = fullAddress;
-
-            // Store myObj in localStorage as a JSON string
             localStorage.setItem("myFormData", JSON.stringify(myObj));
             
-            // Redirect to another page
             window.location.href = '/form/2';
         });
     }
 
 
     if (form2) {
-        const formData = new FormData(form2);
+        
         const storedData = localStorage.getItem("myFormData");
         let myObj = {};
 
         if (storedData) {
             myObj = JSON.parse(storedData);
         }
-        // console.log(myObj["pickupDate"]);
 
         const [month, day, year] = myObj["pickupDate"].split('/');
         const minDate = `${year}-${month.padStart(2, '0')}-${String(parseInt(day, 10) + 1).padStart(2, '0')}`;
         document.getElementById('departure-date').setAttribute('min', minDate);
 
-        // console.log(minDate)
         form2.addEventListener("submit", async (e) => {
             e.preventDefault();
-    
-            
-            // console.log("Pick-up:", new Date(myObj["pickupDate"]))
-            // console.log("Departure:", new Date(formatDateString(formData.get("departure-date"))))
-            // console.log("Compare: ", compareDates(new Date(myObj["pickupDate"]), new Date(formatDateString(formData.get("departure-date")))))
-
-            if (compareDates(myObj["pickupDate"], formatDateString(formData.get("departure-date"))) !== -1) {
-                alert("Departure date must be later than pickup date. Please try again.");
-                return;
-            }
+            const formData = new FormData(form2);
     
             myObj["destinationRegion"] = formData.get("region");
             myObj["destinationCity"] = formData.get("city");
             myObj["destinationBarangay"] = formData.get("barangay");
             myObj["destinationBuilding"] = formData.get("building");
-            myObj["departureDate"] = formatDateString(formData.get("departure-date"));
-            myObj["departureTime"] = convertMilitaryToStandard(formData.get("departure-time"));
+            myObj["departureDate"] = formData.get("departure-date");
+            myObj["departureTime"] = formData.get("departure-time");
+            myObj["departureAddInformation"] = formData.get("additional-info");
 
-            if (formData.get("additional-info").trim() !== "") {
-                myObj["departureAddInformation"] = formData.get("additional-info");
-            }
-    
-            
-    
             const fullAddress = [
                 formData.get("region"),
                 formData.get("city"),
@@ -197,7 +180,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (pickUpElement) {
-        // console.log(myObj);
         pickUpElement.textContent = myObj["pickup_fullAddress"];
         delete myObj["pickup_fullAddress"];
     }
