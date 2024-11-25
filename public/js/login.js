@@ -177,10 +177,11 @@ function updateSubmitButtonState(formData) {
     const cpassword = formData.get("cpassword").trim();
 
     // Check if any fields are empty
-    if (email === "" || username === "" || password === "" || cpassword === "") {
+    if (email === "" || username === "" || password === "" || cpassword === "" || username.length < 4) {
         submitButton.classList.add('grayed');
         submitButton.disabled = true;
     }
+
     // Check if all fields are filled and password is valid
     else if (checkPasswordValidity(password) && password === cpassword) {
         submitButton.classList.remove('grayed');
