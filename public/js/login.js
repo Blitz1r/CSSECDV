@@ -35,14 +35,87 @@ async function checkAccount(username, password) {
     }
 }
 
-document.getElementById('login_form').addEventListener('submit', async function(event) {
-    event.preventDefault();
+async function registerCheck(email, username, password, cpassword){
+    if(password != cpassword){
+        customAlert("Password not the same")
+        return
+    }
 
-    const form = document.getElementById('login_form');
-    const formData = new FormData(form);
+    const myObj = {
+        email: email,
+        username: username,
+        password: password
+    }
     
-    await checkAccount(formData.get("username"), formData.get("password"));
-});
+    const jString = JSON.stringify(myObj);
+    try {
+        const response = await fetch("/registerCheck", {
+            method: 'POST',
+            body: jString,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (response.status === 201) {
+            // customAlert("Good Job!");
+            window.location.href = '/dbview';
+        } 
+        else if (response.status === 409) {
+            customAlert("Account already exists.");
+        }
+        else if (response.status === 500) {
+            customAlert("Server error.");
+        } 
+
+        
+    } catch (error) {
+        console.error('Error during account check:', error);
+        customAlert("An unexpected error occurred.");
+    }
+}
+
+const regform = document.getElementById('reg-form');
+const logform = document.getElementById('login_form');
+
+if(logform){
+    logform.addEventListener('submit', async function(event) {
+        event.preventDefault();
+    
+        const formData = new FormData(logform);
+        
+        await checkAccount(formData.get("username"), formData.get("password"));
+    });
+}
+
+
+
+
+if(regform){
+    regform.addEventListener('submit', async function (e) {
+        e.preventDefault();
+    
+        const formData = new FormData(regform);
+
+        const submitButton = regform.querySelector('button[type="submit"]');
+        submitButton.disabled = true;
+    
+        try {
+            await registerCheck(
+                formData.get("email"),
+                formData.get("username"),
+                formData.get("password"),
+                formData.get("cpassword")
+            );
+        } catch (error) {
+            console.error("Error during form submission:", error);
+        } finally {
+            // Re-enable the submit button
+            submitButton.disabled = false;
+        }
+    });
+}
+
 
 
 

@@ -383,6 +383,36 @@ const formController = {
             res.sendStatus(500); // Internal Server Error - Something went wrong
         }
     },
+    async registerCheck(req, res){
+        try {
+            const email = req.body. email;
+            const username = req.body.username;
+            let password = req.body.password;
+
+            const userCheck = await Account.findOne({ username: { $regex: `^${username}$`, $options: 'i' } });
+            const emailCheck = await Account.findOne({ email: { $regex: `^${email}$`, $options: 'i' } });
+
+            if (userCheck || emailCheck) {
+                return res.sendStatus(409).json({ error: "Account already exists" });
+            }
+            
+            password = await hashPassword(password);
+            const accountData = {
+                email: email,
+                username: username,
+                password: password,
+                deleted: 0
+            }
+
+            const account = new Account(accountData);
+            await account.save();
+
+            res.status(201).json({ message: "Account created successfully" });
+        } catch (error) {
+            console.error(error);
+            res.sendStatus(500);
+        }
+    },
 };
 
 module.exports = formController;

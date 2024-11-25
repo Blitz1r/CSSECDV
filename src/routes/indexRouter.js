@@ -65,6 +65,7 @@ router.post('/editdb/delete', formController.deleteSelected);
 router.post("/submit-details", formController.submit_details);
 
 router.post("/checkAccount", formController.checkAccount);
+router.post("/registerCheck", formController.registerCheck);
 
 
 
