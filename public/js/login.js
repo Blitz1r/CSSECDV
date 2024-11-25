@@ -16,7 +16,6 @@ async function checkAccount(username, password) {
         });
 
         if (response.status === 200) {
-            // customAlert("Good Job!");
             window.location.href = '/dbview';
         } 
         else if (response.status === 404) {
@@ -117,38 +116,40 @@ const numberRequirement = document.getElementById('number-requirement');
 const specialRequirement = document.getElementById('special-requirement');
 
 // Show the requirements when the password field is focused
-passwordField.addEventListener('focus', function () {
-    requirements.classList.remove('hidden');
-});
-
-// Hide the requirements when the password field is blurred, but only if all are met
-passwordField.addEventListener('blur', function () {
-    requirements.classList.add('hidden');
-});
-
-// Validate password on input
-passwordField.addEventListener('input', function () {
-    const password = passwordField.value;
-
-    // Check individual requirements
-    const isLengthValid = password.length >= 8;
-    const isUppercaseValid = /[A-Z]/.test(password);
-    const isNumberValid = /[0-9]/.test(password);
-    const isSpecialValid = /[!@#$%^&*(),.?":{}|<>]/.test(password);
-
-    // Update requirement styles
-    updateRequirementStatus(lengthRequirement, isLengthValid);
-    updateRequirementStatus(uppercaseRequirement, isUppercaseValid);
-    updateRequirementStatus(numberRequirement, isNumberValid);
-    updateRequirementStatus(specialRequirement, isSpecialValid);
-
-    // Hide the requirements if all conditions are met
-    if (isLengthValid && isUppercaseValid && isNumberValid && isSpecialValid) {
-        requirements.classList.add('hidden');
-    } else {
+if(passwordField){
+    passwordField.addEventListener('focus', function () {
         requirements.classList.remove('hidden');
-    }
-});
+    });
+    
+    // Hide the requirements when the password field is blurred, but only if all are met
+    passwordField.addEventListener('blur', function () {
+        requirements.classList.add('hidden');
+    });
+    
+    // Validate password on input
+    passwordField.addEventListener('input', function () {
+        const password = passwordField.value;
+    
+        // Check individual requirements
+        const isLengthValid = password.length >= 8;
+        const isUppercaseValid = /[A-Z]/.test(password);
+        const isNumberValid = /[0-9]/.test(password);
+        const isSpecialValid = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+    
+        // Update requirement styles
+        updateRequirementStatus(lengthRequirement, isLengthValid);
+        updateRequirementStatus(uppercaseRequirement, isUppercaseValid);
+        updateRequirementStatus(numberRequirement, isNumberValid);
+        updateRequirementStatus(specialRequirement, isSpecialValid);
+    
+        // Hide the requirements if all conditions are met
+        if (isLengthValid && isUppercaseValid && isNumberValid && isSpecialValid) {
+            requirements.classList.add('hidden');
+        } else {
+            requirements.classList.remove('hidden');
+        }
+    });
+}
 
 // Helper function to update the requirement styles
 function updateRequirementStatus(element, isValid) {

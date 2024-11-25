@@ -16,6 +16,13 @@ const router = require('./src/routes/indexRouter.js'); // Import the main router
 const server = express();
 var port = process.env.PORT || 3000;
 
+server.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: false, maxAge: 1209600000} // 2 weeks in milliseconds
+}));
+
 hbs.registerPartials(__dirname + '/views/partials');
 server.set('view engine', 'hbs');
 server.use(express.static(path.join(__dirname, 'public')));
@@ -25,12 +32,7 @@ server.use(bodyParser.urlencoded({ extended: true }));
 server.use(router);
 
 
-server.use(session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    cookie: { secure: false, maxAge: 1209600000} // 2 weeks in milliseconds
-  }));
+
 
 async function database() {
     try {
