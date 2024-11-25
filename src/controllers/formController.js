@@ -362,6 +362,21 @@ const formController = {
         
     },
 
+    async getFormStatus(req, res) {
+        try {
+            const referenceCode = req.query.refCode;
+            const form = await Form.findOne({ referenceCode: referenceCode });
+            if (form) {
+                res.render('formStatus', { form: form });
+            } else {
+                res.sendStatus(404);
+            }
+        } catch (error) {
+            console.error(error);
+            res.sendStatus(500);
+        }
+    },
+
     async checkAccount(req, res) {
         try {
             const username = req.body.username;
