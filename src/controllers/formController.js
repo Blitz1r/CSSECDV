@@ -158,6 +158,7 @@ const formController = {
             
                     const escapedSearch = escapeRegex(trimmedSearch); 
                     query.$or = [
+                        { referenceCode: { $regex: escapedSearch, $options: 'i' } },
                         { pickupAddress: { $regex: escapedSearch, $options: 'i' } },
                         { contactCompanyName: { $regex: escapedSearch, $options: 'i' } },
                         { destinationAddress: { $regex: escapedSearch, $options: 'i' } },
