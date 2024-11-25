@@ -61,22 +61,7 @@
     </div>
 </body>
 
-<script>
-    function changeFormMethodAndAction(method, action) {
-            const form = document.querySelector('#edit-form');
-            
-            if (!form) {
-                console.error('Form with id "edit-form" not found!');
-                return;
-            }
-
-            form.method = method;
-            form.action = action;
-            form.submit();
-        }
-</script>
-
-
+<script src="/js/actionButton.js"></script>
 <script src="/js/dbview.js"></script>
 
 
