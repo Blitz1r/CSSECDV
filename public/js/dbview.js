@@ -19,3 +19,47 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+function sortTable(columnIndex) {
+    const table = document.querySelector("table");
+    const rows = Array.from(table.querySelectorAll("tbody tr"));
+
+    const isAscending = table.dataset.sortOrder === "asc";
+    table.dataset.sortOrder = isAscending ? "desc" : "asc";
+
+    rows.sort((a, b) => {
+        const aText = a.children[columnIndex].innerText.trim();
+        const bText = b.children[columnIndex].innerText.trim();
+
+        if (columnIndex === 6 || columnIndex === 7) {
+            // Parse date-time format (e.g., "2024-12-03 - 10:00 AM")
+            const parseDateTime = (text) => {
+                const [datePart, timePart] = text.split(" - ");
+                return new Date(`${datePart} ${timePart}`);
+            };
+
+            const aDate = parseDateTime(aText);
+            const bDate = parseDateTime(bText);
+
+            return isAscending ? aDate - bDate : bDate - aDate;
+        } else if (!isNaN(Date.parse(aText))) {
+            // Sort dates
+            return isAscending
+                ? new Date(aText) - new Date(bText)
+                : new Date(bText) - new Date(aText);
+        } else if (!isNaN(parseFloat(aText)) && !isNaN(parseFloat(bText))) {
+            // Sort numbers
+            return isAscending
+                ? parseFloat(aText) - parseFloat(bText)
+                : parseFloat(bText) - parseFloat(aText);
+        } else {
+            // Sort strings
+            return isAscending
+                ? aText.localeCompare(bText)
+                : bText.localeCompare(aText);
+        }
+    });
+
+    const tbody = table.querySelector("tbody");
+    rows.forEach(row => tbody.appendChild(row));
+}
