@@ -31,7 +31,7 @@ function sortTable(columnIndex) {
         const aText = a.children[columnIndex].innerText.trim();
         const bText = b.children[columnIndex].innerText.trim();
 
-        if (columnIndex === 5 || columnIndex === 6) {
+        if (columnIndex === 6 || columnIndex === 7) {
             // Parse date-time format (e.g., "2024-12-03 - 10:00 AM")
             const parseDateTime = (text) => {
                 const [datePart, timePart] = text.split(" - ");
