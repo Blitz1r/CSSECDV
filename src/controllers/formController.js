@@ -387,6 +387,8 @@ const formController = {
             if (account) {
                 // Await the checkPassword function
                 if (await checkPassword(password, account.password)) {
+                    req.session.username = req.body.username;
+
                     res.sendStatus(200); // OK - Credentials are valid
                 } else {
                     res.sendStatus(401); // Unauthorized - Incorrect password
@@ -429,6 +431,18 @@ const formController = {
             res.sendStatus(500);
         }
     },
+    async setSession(req, res){
+    },
+    // async destorySession(req, res){
+    //     req.session.destroy((err) => {
+    //         if (err) {
+    //             return res.status(500).send('Failed to destroy session');
+    //         }
+    
+    //         res.clearCookie('connect.sid');
+    //         res.send('Session destroyed and cookie cleared');
+    //     });  
+    // },
 };
 
 module.exports = formController;
