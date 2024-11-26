@@ -1,4 +1,5 @@
 <title>Edit Entry</title>
+<link rel="stylesheet" href="/css/customAlert.css">
 <link rel="stylesheet" href="/css/database.css">
 
 <body>
@@ -13,7 +14,7 @@
                     <div class="user-avatar"></div>
                 </div>
             </div>
-            <form id="edit-form" method="post">
+            <form id="edit-form" method="post" data-id="{{editForm._id}}">
                 <div class="form-container">
                     <div class="form-group">
                         <label for="pickupAddress">Location:</label>
@@ -69,7 +70,7 @@
 
                     <div class="form-options">
                         <div class="form-buttons">
-                            <button type="button" class="edit-button" onclick="changeFormMethodAndAction('POST', '/editdb/{{editForm._id}}/edit')">Save Changes</button>
+                            <button type="button" class="edit-button" >Save Changes</button>
                             <button type="button" class="cancel-button" onclick="window.location.href='/editdb'">Cancel</button>
                         </div>
                     </div>
@@ -80,5 +81,17 @@
     <script src="../js/calendar.js"></script>
 </body>
 
+{{!-- Custom Alert div 2 --}}
+<div id="customAlert2" class="custom-alert">
+    <div class="custom-alert-content">
+        <span class="close-btn" onclick="closeCustomAlert()">&times;</span>
+        <p id="alertMessage2"></p> <!-- Unique ID for customAlert2 -->
+        <button class="ok-btn">OK</button>
+        <button class="cancel-btn">Cancel</button>
+    </div>
+</div>
+{{!-- End of Custom Alert div --}}
+
 <script src="/js/actionButton.js"></script>
+<script src="/js/editPage.js"></script>
 
