@@ -20,6 +20,26 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+document.querySelector('.delete-button').addEventListener('click', (e) => {
+    const checkboxes = document.querySelectorAll('.row-checkbox:checked');
+    if (checkboxes.length === 0) {
+        customAlert('Please select at least one item to delete.');
+        return;
+    }
+
+    customAlert2(
+        'Are you sure you want to delete the selected items?',
+        function onConfirm() {
+            // Perform the delete action on confirmation
+            changeFormMethodAndAction('POST', '/editdb/delete');
+        },
+        function onCancel() {
+            // Optionally handle cancel action
+            console.log('User canceled the action.');
+        }
+    );
+});
+
 function sortTable(columnIndex) {
     const table = document.querySelector("table");
     const rows = Array.from(table.querySelectorAll("tbody tr"));
@@ -58,3 +78,32 @@ function sortTable(columnIndex) {
     const tbody = table.querySelector("tbody");
     rows.forEach(row => tbody.appendChild(row));
 }
+
+//* Custom Alert functions /
+function customAlert(message) {
+    document.getElementById('alertMessage1').textContent = message; // Updated ID
+    document.getElementById('customAlert').style.display = 'block';
+}
+
+function customAlert2(message, onConfirm, onCancel) {
+    document.getElementById('alertMessage2').textContent = message; // Updated ID
+
+    const alertDiv = document.getElementById('customAlert2');
+    alertDiv.style.display = 'block';
+
+    alertDiv.querySelector('.ok-btn').onclick = function () {
+        alertDiv.style.display = 'none';
+        if (onConfirm) onConfirm();
+    };
+
+    alertDiv.querySelector('.cancel-btn').onclick = function () {
+        alertDiv.style.display = 'none';
+        if (onCancel) onCancel();
+    };
+}
+
+function closeCustomAlert() {
+    document.getElementById('customAlert').style.display = 'none';
+    document.getElementById('customAlert2').style.display = 'none';
+}
+//* End of Custom Alert functions /

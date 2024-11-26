@@ -1,5 +1,6 @@
 
 <title>Edit Database</title>
+<link rel="stylesheet" href="/css/customAlert.css">
 <link rel="stylesheet" href="/css/database.css">
 
 <body>
@@ -53,12 +54,33 @@
                     </table>
                 </div>
                 <div class="edit-options">
-                    <button type="button" class="delete-button" onclick="changeFormMethodAndAction('POST', '/editdb/delete')">Delete</button>
+                    <button type="button" class="delete-button">Delete</button>
                 </div>
             </form>
         </div>
     </div>
 </body>
+
+{{!-- Custom Alert div --}}
+<div id="customAlert" class="custom-alert">
+    <div class="custom-alert-content">
+        <span class="close-btn" onclick="closeCustomAlert()">&times;</span>
+        <p id="alertMessage1"></p> <!-- Unique ID for customAlert -->
+        <button onclick="closeCustomAlert()">OK</button>
+    </div>
+</div>
+{{!-- End of Custom Alert div --}}
+
+{{!-- Custom Alert div 2 --}}
+<div id="customAlert2" class="custom-alert">
+    <div class="custom-alert-content">
+        <span class="close-btn" onclick="closeCustomAlert()">&times;</span>
+        <p id="alertMessage2"></p> <!-- Unique ID for customAlert2 -->
+        <button class="ok-btn">OK</button>
+        <button class="cancel-btn">Cancel</button>
+    </div>
+</div>
+{{!-- End of Custom Alert div --}}
 
 <script src="/js/actionButton.js"></script>
 <script src="/js/editdb.js"></script>
