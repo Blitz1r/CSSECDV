@@ -105,21 +105,35 @@ const formController = {
 
     async filterView (req, res) {
         try {
-            const { sortOptions, fromDate, toDate, search } = req.body;
+            const { dateOptions, fromDate, toDate, search } = req.body;
             console.log(req.body);
 
             let query = {};
             if (fromDate || toDate) {
-                query.pickupDate = {};
-                if (fromDate) {
-                    const timeZone = 'Asia/Manila'; 
-                    const zonedDate = formatInTimeZone(fromDate, timeZone, 'MM/dd/yyyy'); // HH:mm:ss
-                    query.pickupDate.$gte = new Date(zonedDate);
-                }
-                if (toDate) {
-                    const timeZone = 'Asia/Manila'; 
-                    const zonedDate = formatInTimeZone(toDate, timeZone, 'MM/dd/yyyy');
-                    query.pickupDate.$lte = new Date(zonedDate);
+                if (dateOptions === 'pickupDate'){
+                    query.pickupDate = {};
+                    if (fromDate) {
+                        const timeZone = 'Asia/Manila'; 
+                        const zonedDate = formatInTimeZone(fromDate, timeZone, 'MM/dd/yyyy'); // HH:mm:ss
+                        query.pickupDate.$gte = new Date(zonedDate);
+                    }
+                    if (toDate) {
+                        const timeZone = 'Asia/Manila'; 
+                        const zonedDate = formatInTimeZone(toDate, timeZone, 'MM/dd/yyyy');
+                        query.pickupDate.$lte = new Date(zonedDate);
+                    }
+                } else if (dateOptions === 'departureDate') {
+                    query.departureDate = {};
+                    if (fromDate) {
+                        const timeZone = 'Asia/Manila'; 
+                        const zonedDate = formatInTimeZone(fromDate, timeZone, 'MM/dd/yyyy');
+                        query.departureDate.$gte = new Date(zonedDate);
+                    }
+                    if (toDate) {
+                        const timeZone = 'Asia/Manila'; 
+                        const zonedDate = formatInTimeZone(toDate, timeZone, 'MM/dd/yyyy');
+                        query.departureDate.$lte = new Date(zonedDate);
+                    }
                 }
             }
     
@@ -168,18 +182,7 @@ const formController = {
                 }
             }
 
-            let sort = {};
-            if (sortOptions === 'newestFormNumber') {
-                sort.formNumber = -1; 
-            } else if (sortOptions === 'oldestFormNumber') {
-                sort.formNumber = 1;
-            } else if (sortOptions === 'newestPickupDate') {
-                sort.pickupDate = 1;
-            } else if (sortOptions === 'oldestPickupDate') {
-                sort.pickupDate = -1;
-            }
-
-            const forms = await Form.find(query).sort(sort);
+            const forms = await Form.find(query);
             //to test when session comes
 
             //req.session.bookings = forms;
