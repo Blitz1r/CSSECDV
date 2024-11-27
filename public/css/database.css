@@ -170,8 +170,7 @@ table {
 th, td {
     padding: 8px 10px;
     border: 1px solid #DDD;
-    word-wrap: break-word; /* Wrap text if necessary */
-    white-space: normal;
+
 }
 
 th {
@@ -181,13 +180,15 @@ th {
     font-weight: 700;
     font-size: 14px;
     position: sticky;
-    top: 0; /* Keep headers visible during scroll */
+    top: 0;
     z-index: 1;
 }
 
 td {
     background-color: #F4F4F4;
     font-size: 13px;
+    white-space: normal;
+    word-wrap: break-word;   
 }
 
 tr:hover td {
@@ -225,16 +226,39 @@ th:nth-child(9), td:nth-child(9) {
 }
 
 th:nth-child(10), td:nth-child(10) {
-    width: 10%; /* additonal info, email */
+    width: 8%; /* additonal info, email */
 }
 
 th:nth-child(11), td:nth-child(11) {
-    width: 11%; /* additonal info */
+    width: 10%; /* additonal info */
 }
 
 th:nth-child(12), td:nth-child(12) {
+    width: 9%; /* Edit Button */
+}
+th:nth-child(13), td:nth-child(13) {
     width: 8%; /* Edit Button */
 }
+
+/* Status Styling */
+.status-processing {
+    color: rgb(201, 201, 24);
+    font-weight: bold;
+}
+.status-confirmed {
+    color: green;
+    font-weight: bold;
+}
+.status-cancelled {
+    color: red;
+    font-weight: bold;
+}
+
+.colored-select {
+    font-weight: bold;
+    transition: color 0.1s ease;
+}
+
 
 /* Forms */
 .form-container {

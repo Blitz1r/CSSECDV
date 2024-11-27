@@ -36,3 +36,9 @@ function closeCustomAlert() {
     document.getElementById('customAlert2').style.display = 'none';
 }
 //* End of Custom Alert functions /
+
+// changecolor for options
+function changecolor(selectElement) {
+    const selectedOption = selectElement.options[selectElement.selectedIndex];
+    selectElement.style.color = selectedOption.style.color;
+}

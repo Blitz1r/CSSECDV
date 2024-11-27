@@ -60,8 +60,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="return-date">Return Date:</label>
-                    <input type="date" class="edit-entry" name="return-date" value="2024-11-09">
+                    <label for="return-date">Company Name</label>
+                    <input type="text" class="edit-entry" name="Company" value="Beach Getaways">
                 </div>
                 <div class="form-group">
                     <label for="passengers">Passengers:</label>
@@ -79,6 +79,14 @@
                     <label for="additional-info">Additional Info:</label>
                     <textarea class="edit-entry" name="additional-info">Private tour for a corporate group</textarea>
                 </div>
+                <div class="form-group">
+                    <label for="status">Status:</label>
+                    <select id="status" class="edit-entry colored-select" name="status" onchange="changecolor(this)" style="color: green;">
+                        <option value="confirmed" style="color: green;" selected>Confirmed</option>
+                        <option value="processing" style="color: rgb(201, 201, 24);">Processing</option>
+                        <option value="cancelled" style="color: red;">Cancelled</option>
+                    </select>
+                </div>
 
                 <div class="form-options">
                     <div class="form-buttons">
@@ -91,6 +99,7 @@
         </div>
     </div>
     <script src="../js/calendar.js"></script>
+    <script src="../js/editPage.js"></script>
 </body>
 
 </html>

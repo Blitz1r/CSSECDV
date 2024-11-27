@@ -43,33 +43,70 @@
                         <thead>
                             <tr>
                                 <th>Select</th>
-                                <th>ID</th>
-                                <th>Location</th>
+                                <th>Form Number</th>
+                                <th>Reference Code</th>
+                                <th>Company Name</th>
+                                <th>Pickup Location</th>
                                 <th>Destination</th>
-                                <th>Pickup Date - </th>
+                                <th>Pickup Date - Time</th>
                                 <th>Departure Date - Time</th>
-                                <th>Return Date</th>
                                 <th>Passengers</th>
                                 <th>Contact No.</th>
                                 <th>Email</th>
                                 <th>Additional Info</th>
+                                <th>Status</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td><input type="checkbox" class="row-checkbox"></td>
-                                <td>000001</td>
-                                <td>DLSU, Taft, Manila</td>
-                                <td>Tagaytay City</td>
-                                <td>11/07/2024 - 7:30 AM</td>
-                                <td>11/07/2024 - 8:00 AM</td>
-                                <td>11/09/2024</td>
+                                <td>1</td>
+                                <td>IEKx7Ig4uJ</td>
+                                <td>Green Solutions Inc.</td>
+                                <td>Makati Executive Tower, J.P. Rizal Avenue, Poblacion, Makati, Metro Manila	</td>
+                                <td>Sky Ranch, San Jose, Tagaytay, Cavite</td>
+                                <td>2024-11-07 - 7:30 AM</td>
+                                <td>2024-11-12 - 8:00 AM</td>
                                 <td>14</td>
                                 <td>+639123456789</td>
-                                <td>admin@gmail.com</td>
+                                <td>contact@greensolutions.com</td>
                                 <td>Private tour for a corporate group</td>
+                                <td><span class="status-confirmed">Confirmed</span></td>
+                                <td><button type="button" class="edit-button" onclick="changeFormMethodAndAction('GET', '/editdb/{{this._id}}/edit')">Edit</button></td>
                             </tr>
-                                <!-- add rows here -->
+                            <tr>
+                                <td><input type="checkbox" class="row-checkbox"></td>
+                                <td>2</td>
+                                <td>94uao7dS9s</td>
+                                <td>Education Forward</td>
+                                <td>UP Technohub, Commonwealth Avenue, Diliman, Quezon City, Metro Manila</td>
+                                <td>Hinulugang Taktak, San Roque, Antipolo, Rizal</td>
+                                <td>2024-11-10 - 9:00 AM</td>
+                                <td>2024-11-15 - 10:00 AM</td>
+                                <td>20</td>
+                                <td>+639987654321</td>
+                                <td>info@edu-forward.com</td>
+                                <td>School field trip</td>
+                                <td><span class="status-processing">Processing</span></td>
+                                <td><button type="button" class="edit-button" onclick="changeFormMethodAndAction('GET', '/editdb/{{this._id}}/edit')">Edit</button></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="row-checkbox"></td>
+                                <td>3</td>
+                                <td>EFuUiLCbXC</td>
+                                <td>Eco Adventures</td>
+                                <td>SM Calamba, National Highway, Real, Calamba, Laguna</td>
+                                <td>Makiling Park, Timugan, Los Baños, Laguna</td>
+                                <td>2024-11-12 - 6:00 AM</td>
+                                <td>2024-11-17 - 6:30 AM</td>
+                                <td>8</td>
+                                <td>+639223344556</td>
+                                <td>contact@ecoadventures.com</td>
+                                <td>Nature trip</td>
+                                <td><span class="status-cancelled">Cancelled</span></td>
+                                <td><button type="button" class="edit-button" onclick="changeFormMethodAndAction('GET', '/editdb/{{this._id}}/edit')">Edit</button></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
