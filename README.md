@@ -9,7 +9,7 @@
 ## FEATURES FOR TESTING
 1. Search
 2. Date Filter
-3. Sort options
+3. Sort (Click columns)
 4. Delete forms
 5. Form Creation
 6. Form Edit
