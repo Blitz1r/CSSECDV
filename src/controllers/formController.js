@@ -76,6 +76,7 @@ const formController = {
     getPage4: (req, res) => {
         res.render("page4", {
             title: "Submission Success!",
+            referenceCode: referenceCode,
         })
     },
 
@@ -350,14 +351,13 @@ const formController = {
             // console.log("form Data: ", formData);
 
             try {
-                // Create a new user instance with the constructed user object
+                // Create a new form in the database
                 await Form.create(formData);
-                // console.log('Form created successfully:', formData)
-                // Respond with a sendStatus code and message
-                return res.sendStatus(201);
+
+                return res.status(201).json({ referenceCode: referenceCode });
             } catch (creationError) {
                 console.error('Error:', creationError);
-                return res.sendstatus(500);
+                return res.sendStatus(500);
             }
             
         } catch (error) {

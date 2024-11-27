@@ -252,9 +252,17 @@ function sendDataToDB() {
     })
     .then(response => {
         if (response.status === 201) {
-            window.location = "/form/4";
+            return response.json();
         } else {
             alert("Error: " + response.statusText);
+            throw new Error("Request failed with status: " + response.status); 
+        }
+    })
+    .then(data => {
+        if (data.referenceCode) {
+            window.location = `/form/4?referenceCode=${data.referenceCode}`;
+        } else {
+            alert("Error: No reference code returned.");
         }
     })
     .catch(error => {
