@@ -94,7 +94,10 @@ body {
 .header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 20px;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
 .search-filter, .date-filter {
@@ -135,21 +138,34 @@ body {
 .user-profile {
     display: flex;
     align-items: center;
+    gap: 10px;
+    min-width: 0;
+    flex-shrink: 1;
+    overflow: hidden;
 }
 
 .user-name {
-    margin-right: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-size: 1.2em;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
 }
 
-.user-avatar {
-    width: 40px;
-    height: 40px;
-    background-color: gray;
-    border-radius: 50%;
+.logout-btn {
+    background-color: #0D325F;
+    border: none;
+    padding: 10px 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
+
+.logout-btn:hover {
+    background-color: #1E4E82;
+}
+
 
 /* table */
 .table-container {
