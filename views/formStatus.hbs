@@ -37,13 +37,28 @@
                 <span class="value">{{form.pickupPassengers}}</span>
             </div>
             <div class="status-item">
-                <!-- Processing, Confirmed, Cancelled -->
                 <span class="label">Status:</span>
-                <span class="value">Processing</span> 
+                {{#ifCond form.status '==' 'confirmed'}}
+                    <span class="value" style="color: green;">Confirmed</span> 
+                {{else ifCond form.status '==' 'processing'}}
+                    <span class="value" style="color: rgb(201, 201, 24);">Processing</span>
+                {{else ifCond form.status '==' 'cancelled'}}
+                    <span class="value" style="color: red;">Cancelled</span>
+                {{else}}
+                    <span class="value">{{form.status}}</span>
+                {{/ifCond}}
             </div>
         </div>
         <div class="status-message">
-            Your booking is in progress. We are processing your request and will notify you shortly.
+            {{#ifCond form.status '==' 'confirmed'}}
+                Your booking has been confirmed. We look forward to serving you.
+            {{else ifCond form.status '==' 'processing'}}
+                Your booking is in progress. We are processing your request and will notify you shortly.
+            {{else ifCond form.status '==' 'cancelled'}}
+                We're sorry to inform you that your booking has been cancelled. Please contact us for more details.
+            {{else}}
+                Your booking status is: {{form.status}}. Please check back later for updates.
+            {{/ifCond}}
         </div>
         <button class="back-button" onclick="window.location.href='/'">Back to Options</button>
     </div>
