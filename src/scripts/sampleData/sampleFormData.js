@@ -20,7 +20,8 @@ const sampleFormData = [
         contactCompanyName: "Green Solutions Inc.",
         contactEmail: "contact@greensolutions.com",
         contactNumber: "+639123456789",
-        deleted: false
+        deleted: false,
+        status: "confirmed"
     },
     {
         formNumber: 2,
@@ -43,7 +44,8 @@ const sampleFormData = [
         contactCompanyName: "Education Forward",
         contactEmail: "info@edu-forward.com",
         contactNumber: "+639987654321",
-        deleted: false
+        deleted: false,
+        status: "processing"
     },
     {
         formNumber: 3,
@@ -66,7 +68,8 @@ const sampleFormData = [
         contactCompanyName: "Eco Adventures",
         contactEmail: "contact@ecoadventures.com",
         contactNumber: "+639223344556",
-        deleted: false
+        deleted: false,
+        status: "cancelled"
     },
     {
         formNumber: 4,
@@ -89,7 +92,8 @@ const sampleFormData = [
         contactCompanyName: "Business Corp",
         contactEmail: "contact@businesscorp.com",
         contactNumber: "+639112233445",
-        deleted: false
+        deleted: false,
+        status: "processing"
     },
     {
         formNumber: 5,
@@ -112,7 +116,8 @@ const sampleFormData = [
         contactCompanyName: "Private",
         contactEmail: "alex.cruz@gmail.com",
         contactNumber: "+639556677889",
-        deleted: false
+        deleted: false,
+        status: "confirmed"
     },
     {
         formNumber: 6,
@@ -135,7 +140,8 @@ const sampleFormData = [
         contactCompanyName: "Event Managers",
         contactEmail: "contact@eventmanagers.com",
         contactNumber: "+639876543210",
-        deleted: false
+        deleted: false,
+        status: "processing"
     },
     {
         formNumber: 7,
@@ -158,7 +164,8 @@ const sampleFormData = [
         contactCompanyName: "Cebu Enterprises",
         contactEmail: "info@cebuenterprises.com",
         contactNumber: "+639998877665",
-        deleted: false
+        deleted: false,
+        status: "cancelled"
     },
     {
         formNumber: 8,
@@ -181,7 +188,8 @@ const sampleFormData = [
         contactCompanyName: "Davao Builders",
         contactEmail: "contact@davaobuilders.com",
         contactNumber: "+639667788990",
-        deleted: false
+        deleted: false,
+        status: "processing"
     },
     {
         formNumber: 9,
@@ -204,7 +212,8 @@ const sampleFormData = [
         contactCompanyName: "Helping Hands",
         contactEmail: "contact@helpinghands.com",
         contactNumber: "+639334455667",
-        deleted: false
+        deleted: false,
+        status: "confirmed"
     },
     {
         formNumber: 10,
@@ -227,7 +236,8 @@ const sampleFormData = [
         contactCompanyName: "Beach Getaways",
         contactEmail: "info@beachgetaways.com",
         contactNumber: "+639556644332",
-        deleted: false
+        deleted: false,
+        status: "processing"
     }
 ];
 

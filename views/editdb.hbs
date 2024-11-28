@@ -29,6 +29,7 @@
                                 <th>Contact No.</th>
                                 <th>Email</th>
                                 <th>Additional Info</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -47,6 +48,17 @@
                                 <td>{{this.contactNumber}}</td>
                                 <td>{{this.contactEmail}}</td>
                                 <td>{{this.departureAddInformation}}</td>
+                                <td>
+                                    {{#ifCond this.status '==' 'confirmed'}}
+                                        <span class="status-confirmed">Confirmed</span>
+                                    {{else ifCond this.status '==' 'processing'}}
+                                        <span class="status-processing">Processing</span>
+                                    {{else ifCond this.status '==' 'cancelled'}}
+                                        <span class="status-cancelled">Cancelled</span>
+                                    {{else}}
+                                        <span>{{this.status}}</span>
+                                    {{/ifCond}}
+                                </td>
                                 <td><button type="button" class="edit-button" onclick="changeFormMethodAndAction('GET', '/editdb/{{this._id}}/edit')">Edit</button></td>
                             </tr>
                             {{/each}}

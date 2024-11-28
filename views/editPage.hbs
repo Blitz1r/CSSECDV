@@ -67,6 +67,14 @@
                         <label for="departureAddInformation">Additional Info:</label>
                         <textarea class="edit-entry" name="departureAddInformation">{{editForm.departureAddInformation}}</textarea>
                     </div>
+                    <div class="form-group">
+                        <label for="status">Status:</label>
+                        <select id="status" onchange="changecolor(this)" class="edit-entry" name="status">
+                            <option value="confirmed" style="color: green;" {{#ifCond editForm.status '==' 'confirmed'}}selected{{/ifCond}}>Confirmed</option>
+                            <option value="processing" style="color: rgb(201, 201, 24);" {{#ifCond editForm.status '==' 'processing'}}selected{{/ifCond}}>Processing</option>
+                            <option value="cancelled" style="color: red;" {{#ifCond editForm.status '==' 'cancelled'}}selected{{/ifCond}}>Cancelled</option>
+                        </select>
+                    </div>
 
                     <div class="form-options">
                         <div class="form-buttons">

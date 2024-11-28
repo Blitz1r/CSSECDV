@@ -116,6 +116,12 @@ const formSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    status: {
+        type: String,
+        enum: ['confirmed', 'processing', 'cancelled'],
+        default: 'processing', 
+        required: true
+    },
     deleted: {
         type: Boolean,
         default: 0
