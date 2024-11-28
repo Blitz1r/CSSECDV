@@ -19,13 +19,15 @@ body {
 
 /* sidebar */
 .sidebar {
-    width: 215px;
+    width: 210px;
+    flex-shrink: 0;
     background-color: #0D325F;
     color: #FFF;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
+    position: relative;
     transition: width 0.3s;
 }
 
@@ -58,16 +60,23 @@ body {
     display: block;
     padding: 10px 15px;
     font-size: 1.1em;
-    border-radius: 5px;
     transition: background 0.3s ease;
 }
 
-.menu-item.active, .menu-item:hover {
+.menu-item.active {
     background-color: #1E4E82;
+    border-radius: 5px;
+}
+
+.menu-item:hover {
+    background-color: #1E4E82;
+    border-radius: 5px;
 }
 
 .sidebar.minimized .menu-item {
+    pointer-events: none;
     opacity: 0;
+    cursor: default;
 }
 
 .toggle-btn {
@@ -77,9 +86,9 @@ body {
     background-color: #0D325F;
     border: none;
     padding: 5px 10px;
+    cursor: pointer;
     font-size: 16px;
     border-radius: 5px;
-    cursor: pointer;
 }
 
 /* Main Content */

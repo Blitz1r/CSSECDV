@@ -19,7 +19,8 @@ body {
 }
 
 .sidebar {
-    width: 215px;
+    width: 210px;
+    flex-shrink: 0;
     background-color: #0D325F;
     color: #FFF;
     display: flex;
@@ -73,7 +74,9 @@ body {
 }
 
 .sidebar.minimized .menu-item {
+    pointer-events: none;
     opacity: 0;
+    cursor: default;
 }
 
 .toggle-btn {
