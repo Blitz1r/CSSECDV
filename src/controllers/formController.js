@@ -107,7 +107,7 @@ const formController = {
     async filterView (req, res) {
         try {
             const { dateOptions, fromDate, toDate, search } = req.body;
-            console.log(req.body);
+            // console.log(req.body);
 
             let query = {};
             if (fromDate || toDate) {
@@ -200,13 +200,13 @@ const formController = {
     async loadEditSelected (req, res) {
         try {
             const id = req.params.id; 
-            console.log('id:', id); 
+            // console.log('id:', id); 
             if (!id) {
                 return res.status(400).send('id is missing');
             }
             const form = await Form.findById({_id:id});
 
-            console.log(form);
+            // console.log(form);
             res.render('editPage', {editForm:form});
 
             //res.redirect(req.get('Referrer') || '/editdb');
@@ -219,7 +219,7 @@ const formController = {
     async postEditSelected (req, res) {
         try {
             const id = req.params.id;
-            console.log(req.body);
+            // console.log(req.body);
             
             const updatedData = {
                 pickupAddress,
@@ -244,7 +244,7 @@ const formController = {
             // Update the form data
             await Form.updateOne({ _id: id }, updatedData);
 
-            console.log('Form updated successfully:', updatedData);
+            // console.log('Form updated successfully:', updatedData);
             res.redirect(req.get('Referrer') || '/editdb/:id/edit');
             
         } catch (error) {
@@ -264,7 +264,7 @@ const formController = {
 
             await Form.deleteMany({ _id: { $in: ids } });
         
-            console.log('Form deleted successfully:', ids);
+            // console.log('Form deleted successfully:', ids);
 
             res.redirect(req.get('Referrer') || '/editdb');
         } catch (err) {
@@ -319,7 +319,7 @@ const formController = {
                 }
             }
 
-            console.log('Generated Reference Code:', referenceCode);
+            // console.log('Generated Reference Code:', referenceCode);
 
             const formData = {
                 formNumber: formNumber,
@@ -390,7 +390,7 @@ const formController = {
             if (account) {
                 // Await the checkPassword function
                 if (await checkPassword(password, account.password)) {
-                    req.session.username = req.body.username;
+                    req.session.username = account.username;
 
                     res.sendStatus(200); // OK - Credentials are valid
                 } else {
@@ -414,7 +414,7 @@ const formController = {
             const emailCheck = await Account.findOne({ email: { $regex: `^${email}$`, $options: 'i' } });
 
             if (userCheck || emailCheck) {
-                return res.sendStatus(409).json({ error: "Account already exists" });
+                return res.sendStatus(409)
             }
             
             password = await hashPassword(password);
@@ -427,25 +427,23 @@ const formController = {
 
             const account = new Account(accountData);
             await account.save();
+            req.session.username = account.username;
 
-            res.status(201).json({ message: "Account created successfully" });
+            res.sendStatus(201)
         } catch (error) {
             console.error(error);
             res.sendStatus(500);
         }
     },
-    async setSession(req, res){
-    },
-    // async destorySession(req, res){
-    //     req.session.destroy((err) => {
-    //         if (err) {
-    //             return res.status(500).send('Failed to destroy session');
-    //         }
+    async destorySession(req, res){
+        req.session.destroy((err) => {
+            if (err) {
+                return res.status(500).send('Failed to destroy session');
+            }
     
-    //         res.clearCookie('connect.sid');
-    //         res.send('Session destroyed and cookie cleared');
-    //     });  
-    // },
+            res.sendStatus(200);
+        });  
+    },
 };
 
 module.exports = formController;

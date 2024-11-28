@@ -2,12 +2,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const pageTitle = document.title.split(' ')[0]; // Get the current page title
     const menuItems = document.querySelectorAll('.menu-item');
 
-    console.log("Page title: " + pageTitle);
+    // console.log("Page title: " + pageTitle);
 
-    console.log("Menu items:");
-    menuItems.forEach(item => {
-        console.log(item.textContent.split(' ')[0]); // Logs true if they match, false otherwise
-    });
+    // console.log("Menu items:");
+    // menuItems.forEach(item => {
+    //     console.log(item.textContent.split(' ')[0]); // Logs true if they match, false otherwise
+    // });
     
 
     menuItems.forEach(item => {
@@ -58,3 +58,25 @@ function sortTable(columnIndex) {
     const tbody = table.querySelector("tbody");
     rows.forEach(row => tbody.appendChild(row));
 }
+
+const logoutBtn = document.getElementById("logout-btn");
+
+logoutBtn.addEventListener("click", async function(e) {
+    try {
+        const response = await fetch("/logout", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (response.status === 200) {
+            window.location.href = '/login';
+        } else {
+            customAlert("Server error.");
+        }
+    } catch (error) {
+        console.error('Error during logout:', error);
+        customAlert("An unexpected error occurred.");
+    }
+});

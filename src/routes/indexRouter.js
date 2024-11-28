@@ -15,6 +15,17 @@ router.use((req, res, next) => {
 
 const formController = require('../controllers/formController.js');
 
+
+function isAuthenticated(req, res, next) {
+    if (!req.session.username) {
+        return res.redirect('/login');
+    }
+    next();
+}
+
+router.use("/dbview", isAuthenticated);
+
+
 router.get('/', formController.getFrontPage);
 
 router.get('/form/1', formController.getPage1);
@@ -29,11 +40,13 @@ router.get('/form/4', formController.getPage4);
 
 router.get('/dbview/calendar', formController.getCalendar);
 
-router.get('/dbview/login', formController.getLogin);
+router.get('/login', formController.getLogin);
 
-router.get('/dbview/signup', formController.getSignUp);
+router.get('/signup', formController.getSignUp);
 
 router.get("/dbview", async (req, res) => {
+
+
     const bookingData = await form.find().sort({'formNumber' : -1});
     
     res.render("dbview", {
@@ -45,6 +58,10 @@ router.get("/dbview", async (req, res) => {
 
 router.get("/editdb", async (req, res) => {
     const bookingData = await form.find().sort({'formNumber' : -1});
+
+    if (!req.session.username) {
+        return res.redirect('/login');
+    }
 
     res.render("editdb", {
         title: "Edit Database",
@@ -70,7 +87,7 @@ router.post("/checkAccount", formController.checkAccount);
 
 router.post("/registerCheck", formController.registerCheck);
 
-router.post("/logout", formController.registerCheck);
+router.post("/logout", formController.destorySession);
 
 
 

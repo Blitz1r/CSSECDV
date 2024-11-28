@@ -194,8 +194,6 @@ function updateSubmitButtonState(formData) {
     }
 }
 
-
-
 //* Custom Alert functions /
 function customAlert(message) {
     document.getElementById('alertMessage').textContent = message;

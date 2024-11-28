@@ -18,12 +18,12 @@ const bookings = [];
 function calendar() {
     const calendar = document.getElementById('calendar');
     calendar.innerHTML = '';
-
-    if (isWeeklyView) {
-        WeeklyView();
-    } else {
-        MonthlyView();
-    }
+    MonthlyView();
+    // if (isWeeklyView) {
+    //     WeeklyView();
+    // } else {
+       
+    // }
 }
 
 function MonthlyView() {

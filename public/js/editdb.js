@@ -79,6 +79,29 @@ function sortTable(columnIndex) {
     rows.forEach(row => tbody.appendChild(row));
 }
 
+const logoutBtn = document.getElementById("logout-btn");
+
+logoutBtn.addEventListener('click', async function(e) {
+    try {
+        const response = await fetch("/logout", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (response.status === 200) {
+            window.location.href = '/dbview/login';
+        } else {
+            customAlert("Server error.");
+        }
+    } catch (error) {
+        console.error('Error during logout:', error);
+        customAlert("An unexpected error occurred.");
+    }
+});
+
+
 //* Custom Alert functions /
 function customAlert(message) {
     document.getElementById('alertMessage1').textContent = message; // Updated ID
