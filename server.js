@@ -66,6 +66,6 @@ async function database() {
 }
 
 server.listen(port, async function() {
-    await database();
+    await database(); //! Comment this out so no sample data will be filled.
     console.log(`Server: Running on http://localhost:${port}`);
 });
